@@ -1,7 +1,7 @@
-function regpoly(x, y, s, r) {
-    // center x, center y, sides, radius
+function regpoly(x, y, s, r, theta) {
+    // center x, center y, sides, radius, rotation
     var points = [];
-    var myvector = [r, 0];
+    var myvector = [r, theta];
     for (var i = 0; i < s; i++) {
         points.push([x + Math.cos(myvector[1]) * myvector[0], y + Math.sin(myvector[1]) * myvector[0]]);
         myvector[1] += 2 * Math.PI / s;
