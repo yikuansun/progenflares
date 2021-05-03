@@ -61,6 +61,20 @@ function drawFlare(view, flareconfig) {
     colorLayer1.style.fill = flareconfig.primaryColor;
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
+    var currentx = flareconfig.lightx;
+    var currenty = flareconfig.lighty;
+    for (var i = 0; i < 50; i++) {
+        currentx += (flareconfig.toX - flareconfig.lightx) / 20;
+        currenty += (flareconfig.toY - flareconfig.lighty) / 20;
+        if (Math.random() < 0.35) {
+            var sclFac = Math.random() * i / 25;
+            var iris = regpoly(currentx, currenty, flareconfig.multiIris.sides, flareconfig.multiIris.radius * sclFac, flareconfig.multiIris.rotation);
+            iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
+            iris.style.fill = flareconfig.multiIris.color;
+            iris.style.mixBlendMode = "screen";
+            view.appendChild(iris);
+        }
+    }
 }
 
 function test_svg_download() {
@@ -136,9 +150,10 @@ drawFlare(view, {
         blur: 6.9
     },
     multiIris: {
+        color: "red",
         sides: 6,
-        scale: 1,
+        radius: 69,
         rotation: 0,
-        opacity: 1
+        opacity: 0.1
     },
 });
