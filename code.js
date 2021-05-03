@@ -17,12 +17,22 @@ svg.appendChild(view);
 
 function drawFlare(view, flareconfig) {
     view.innerHTML = "";
-    var starburst = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, 0);
-    starburst.style.fill = "white";
+    var starburst = document.createElementNS(namespace, "g");
     view.appendChild(starburst);
-    var glint = star(flareconfig.lightx, flareconfig.lighty, flareconfig.glint.sides, flareconfig.glint.innerRadius, flareconfig.glint.outerRadius, 0);
-    glint.style.fill = "white";
+    for (var i = 0; i < flareconfig.starburst.softness; i++) {
+        var starburst_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, flareconfig.starburst.rotation + i / 1000);
+        starburst_layer.style.fill = "white";
+        starburst_layer.setAttribute("fill-opacity", 1 / flareconfig.starburst.softness);
+        starburst.appendChild(starburst_layer);
+    }
+    var glint = document.createElementNS(namespace, "g");
     view.appendChild(glint);
+    for (var i = 0; i < flareconfig.glint.softness; i++) {
+        var glint_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.glint.sides, flareconfig.glint.innerRadius, flareconfig.glint.outerRadius, flareconfig.glint.rotation + i / 1000);
+        glint_layer.style.fill = "white";
+        glint_layer.setAttribute("fill-opacity", 1 / flareconfig.glint.softness);
+        glint.appendChild(glint_layer);
+    }
 }
 
 drawFlare(view, {
@@ -34,12 +44,14 @@ drawFlare(view, {
         sides: 18,
         innerRadius: 8,
         outerRadius: 80,
-        rotation: 0
+        rotation: 0,
+        softness: 200
     },
     glint: {
         sides: 69,
         innerRadius: 5,
         outerRadius: 69,
-        rotation: 0
+        rotation: 0,
+        softness: 50
     }
 });
