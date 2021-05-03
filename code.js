@@ -48,10 +48,16 @@ drawFlare(view, {
         softness: 200
     },
     glint: {
-        sides: 69,
+        sides: 50,
         innerRadius: 5,
-        outerRadius: 69,
+        outerRadius: 150,
         rotation: 0,
-        softness: 50
-    }
+        softness: 100
+    },
+    multiIris: {
+        sides: 6,
+        scale: 1,
+        rotation: 0,
+        opacity: 1
+    },
 });
