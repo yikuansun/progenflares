@@ -107,7 +107,7 @@ drawFlare(view, {
     lighty: docHeight * 0.19,
     toX: docWidth * 0.5,
     toY: docHeight * 0.5,
-    primaryColor: "hsl(25deg, 100%, 50%)",
+    primaryColor: "hsl(35deg, 100%, 50%)",
     glow: {
         radius: 400,
         opacity: 0.1
