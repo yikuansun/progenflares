@@ -72,6 +72,8 @@ function drawFlare(view, flareconfig) {
             iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
             iris.style.fill = flareconfig.multiIris.color;
             iris.style.mixBlendMode = "screen";
+            iris.setAttribute("filter", "url(#MIBlur)");
+            document.querySelector("#MIBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.multiIris.blur);
             view.appendChild(iris);
         }
     }
@@ -154,6 +156,7 @@ drawFlare(view, {
         sides: 6,
         radius: 69,
         rotation: 0,
-        opacity: 0.1
+        opacity: 0.1,
+        blur: 3
     },
 });
