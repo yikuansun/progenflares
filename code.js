@@ -56,6 +56,7 @@ function drawFlare(view, flareconfig) {
     streak.setAttribute("points", `${flareconfig.lightx},${flareconfig.lighty - flareconfig.streak.height / 2} ${flareconfig.lightx + flareconfig.streak.length / 2},${flareconfig.lighty} ${flareconfig.lightx},${flareconfig.lighty + flareconfig.streak.height / 2} ${flareconfig.lightx - flareconfig.streak.length / 2},${flareconfig.lighty}`);
     streak.style.fill = "white";
     streak.setAttribute("filter", "url(#streakBlur)");
+    document.querySelector("#streakBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.streak.blur);
     view.appendChild(streak);
 }
 
@@ -89,7 +90,8 @@ drawFlare(view, {
     },
     streak: {
         length: 1000,
-        height: 15
+        height: 15,
+        blur: 6.9
     },
     multiIris: {
         sides: 6,
