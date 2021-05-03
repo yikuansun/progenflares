@@ -17,6 +17,12 @@ svg.appendChild(view);
 
 function drawFlare(view, flareconfig) {
     view.innerHTML = "";
+    var glow = document.createElementNS(namespace, "circle");
+    glow.style.fill = "url('#glowGradient')";
+    glow.setAttribute("r", flareconfig.glow.radius);
+    glow.setAttribute("cx", flareconfig.lightx);
+    glow.setAttribute("cy", flareconfig.lighty);
+    view.appendChild(glow);
     var starburst = document.createElementNS(namespace, "g");
     view.appendChild(starburst);
     for (var i = 0; i < flareconfig.starburst.softness; i++) {
@@ -40,6 +46,9 @@ drawFlare(view, {
     lighty: 100,
     toX: 400,
     toY: 225,
+    glow: {
+        radius: 200
+    },
     starburst: {
         sides: 18,
         innerRadius: 8,
