@@ -11,3 +11,5 @@ bgRect.setAttribute("x", 0); bgRect.setAttribute("y", 0);
 bgRect.setAttribute("width", docWidth); bgRect.setAttribute("height", docHeight);
 bgRect.style.fill = "black";
 svg.appendChild(bgRect);
+
+var view = document.createElementNS(namespace, "g");
