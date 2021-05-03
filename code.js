@@ -52,7 +52,7 @@ drawFlare(view, {
     starburst: {
         sides: 18,
         innerRadius: 8,
-        outerRadius: 80,
+        outerRadius: 100,
         rotation: 0,
         softness: 100
     },
