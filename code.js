@@ -71,11 +71,15 @@ function pngify(svgElem) {
     var imgElem = document.createElement("img");
     imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
     imgElem.onload = function() {
+        var svgClientRect = {
+            width: parseFloat(svgElem.getAttribute("viewBox").split(" ")[2]),
+            height: parseFloat(svgElem.getAttribute("viewBox").split(" ")[3])
+        };
         var canvas = document.createElement("canvas");
-        canvas.width = docWidth;
-        canvas.height = docHeight;
+        canvas.width = svgClientRect.width;
+        canvas.height = svgClientRect.height;
         var ctx = canvas.getContext("2d");
-        ctx.drawImage(imgElem, 0, 0, docWidth, docHeight);
+        ctx.drawImage(imgElem, 0, 0, svgClientRect.width, svgClientRect.height);
         var downloadLink = document.createElement("a");
         downloadLink.href = canvas.toDataURL("image/png");
         downloadLink.download = "my_lens_flare.png";
