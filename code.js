@@ -28,9 +28,9 @@ drawFlare(view, {
     toX: 400,
     toY: 225,
     star1: {
-        sides: 12,
+        sides: 18,
         innerRadius: 8,
-        outerRadius: 69,
+        outerRadius: 80,
         rotation: 0
     }
 });
