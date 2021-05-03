@@ -55,30 +55,30 @@ function drawFlare(view, flareconfig) {
 }
 
 drawFlare(view, {
-    lightx: 100,
-    lighty: 100,
-    toX: 400,
-    toY: 225,
+    lightx: docWidth * 0.19,
+    lighty: docHeight * 0.19,
+    toX: docWidth * 0.5,
+    toY: docHeight * 0.5,
     glow: {
-        radius: 200,
+        radius: 400,
         opacity: 0.1
     },
     starburst: {
         sides: 18,
-        innerRadius: 10,
-        outerRadius: 100,
+        innerRadius: 20,
+        outerRadius: 200,
         rotation: 0,
         softness: 100
     },
     glint: {
         sides: 50,
-        innerRadius: 5,
-        outerRadius: 150,
+        innerRadius: 10,
+        outerRadius: 300,
         rotation: 0,
         softness: 50
     },
     ring: {
-        radius: 90,
+        radius: 180,
         spread: 30,
         opacity: 0.5,
     },
