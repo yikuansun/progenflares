@@ -66,6 +66,23 @@ function test_svg_download() {
     a.click();
 }
 
+function pngify(svgElem) {
+    var svgData = new XMLSerializer().serializeToString(svgElem);
+    var imgElem = document.createElement("img");
+    imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+    imgElem.onload = function() {
+        var canvas = document.createElement("canvas");
+        canvas.width = docWidth;
+        canvas.height = docHeight;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(imgElem, 0, 0, docWidth, docHeight);
+        var downloadLink = document.createElement("a");
+        downloadLink.href = canvas.toDataURL("image/png");
+        downloadLink.download = "my_lens_flare.png";
+        downloadLink.click();
+    }
+}
+
 drawFlare(view, {
     lightx: docWidth * 0.19,
     lighty: docHeight * 0.19,
