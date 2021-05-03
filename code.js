@@ -60,6 +60,15 @@ function drawFlare(view, flareconfig) {
     view.appendChild(streak);
 }
 
+function test_svg_download() {
+    var a = document.createElement("a");
+    var s = (new XMLSerializer()).serializeToString(svg);
+    var encodedData = window.btoa(s);
+    a.href = "data:image/svg+xml;base64," + encodedData;
+    a.download = "yessir";
+    a.click();
+}
+
 drawFlare(view, {
     lightx: docWidth * 0.19,
     lighty: docHeight * 0.19,
