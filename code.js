@@ -26,7 +26,7 @@ function drawFlare(view, flareconfig) {
     var starburst = document.createElementNS(namespace, "g");
     view.appendChild(starburst);
     for (var i = 0; i < flareconfig.starburst.softness; i++) {
-        var starburst_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, flareconfig.starburst.rotation + i / 1000);
+        var starburst_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, flareconfig.starburst.rotation + i / 500);
         starburst_layer.style.fill = "white";
         starburst_layer.setAttribute("fill-opacity", 1 / flareconfig.starburst.softness);
         starburst.appendChild(starburst_layer);
@@ -34,7 +34,7 @@ function drawFlare(view, flareconfig) {
     var glint = document.createElementNS(namespace, "g");
     view.appendChild(glint);
     for (var i = 0; i < flareconfig.glint.softness; i++) {
-        var glint_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.glint.sides, flareconfig.glint.innerRadius, flareconfig.glint.outerRadius, flareconfig.glint.rotation + i / 1000);
+        var glint_layer = star(flareconfig.lightx, flareconfig.lighty, flareconfig.glint.sides, flareconfig.glint.innerRadius, flareconfig.glint.outerRadius, flareconfig.glint.rotation + i / 500);
         glint_layer.style.fill = "white";
         glint_layer.setAttribute("fill-opacity", 1 / flareconfig.glint.softness);
         glint.appendChild(glint_layer);
@@ -54,14 +54,14 @@ drawFlare(view, {
         innerRadius: 8,
         outerRadius: 80,
         rotation: 0,
-        softness: 200
+        softness: 100
     },
     glint: {
         sides: 50,
         innerRadius: 5,
         outerRadius: 150,
         rotation: 0,
-        softness: 100
+        softness: 50
     },
     multiIris: {
         sides: 6,
