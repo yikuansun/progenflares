@@ -40,18 +40,15 @@ function drawFlare(view, flareconfig) {
         glint_layer.setAttribute("fill-opacity", 1 / flareconfig.glint.softness);
         glint.appendChild(glint_layer);
     }
-    var ring = document.createElementNS(namespace, "g");
+    var ring = document.createElementNS(namespace, "circle");
+    ring.setAttribute("r", flareconfig.ring.radius);
+    ring.setAttribute("filter", "url(#ringBlur)");
+    document.querySelector("#ringBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.ring.softness);
+    ring.setAttribute("cx", flareconfig.lightx);
+    ring.setAttribute("cy", flareconfig.lighty);
+    ring.style.fill = "none";
+    ring.setAttribute("stroke", "white");
     view.appendChild(ring);
-    for (var i = 0; i < flareconfig.ring.spread; i++) {
-        var ring_layer = document.createElementNS(namespace, "circle");
-        ring_layer.setAttribute("r", flareconfig.ring.radius - flareconfig.ring.spread + i / 2);
-        ring_layer.setAttribute("opacity", flareconfig.ring.opacity / flareconfig.ring.spread);
-        ring_layer.setAttribute("cx", flareconfig.lightx);
-        ring_layer.setAttribute("cy", flareconfig.lighty);
-        ring_layer.style.fill = "none";
-        ring_layer.setAttribute("stroke", "white");
-        ring.appendChild(ring_layer);
-    }
     var streak = document.createElementNS(namespace, "polygon");
     streak.setAttribute("points", `${flareconfig.lightx},${flareconfig.lighty - flareconfig.streak.height / 2} ${flareconfig.lightx + flareconfig.streak.length / 2},${flareconfig.lighty} ${flareconfig.lightx},${flareconfig.lighty + flareconfig.streak.height / 2} ${flareconfig.lightx - flareconfig.streak.length / 2},${flareconfig.lighty}`);
     streak.style.fill = "white";
@@ -94,8 +91,7 @@ drawFlare(view, {
     },
     ring: {
         radius: 180,
-        spread: 30,
-        opacity: 0.5,
+        softness: 10
     },
     streak: {
         length: 1000,
