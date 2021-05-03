@@ -55,7 +55,7 @@ function drawFlare(view, flareconfig) {
     var streak = document.createElementNS(namespace, "polygon");
     streak.setAttribute("points", `${flareconfig.lightx},${flareconfig.lighty - flareconfig.streak.height / 2} ${flareconfig.lightx + flareconfig.streak.length / 2},${flareconfig.lighty} ${flareconfig.lightx},${flareconfig.lighty + flareconfig.streak.height / 2} ${flareconfig.lightx - flareconfig.streak.length / 2},${flareconfig.lighty}`);
     streak.style.fill = "white";
-    streak.setAttribute("fill-opacity", 0); // bruh
+    streak.setAttribute("filter", "url(#streakBlur)");
     view.appendChild(streak);
 }
 
@@ -88,7 +88,7 @@ drawFlare(view, {
         opacity: 0.5,
     },
     streak: {
-        length: 800,
+        length: 1000,
         height: 15
     },
     multiIris: {
