@@ -22,6 +22,7 @@ function drawFlare(view, flareconfig) {
     glow.setAttribute("r", flareconfig.glow.radius);
     glow.setAttribute("cx", flareconfig.lightx);
     glow.setAttribute("cy", flareconfig.lighty);
+    glow.setAttribute("fill-opacity", flareconfig.glow.opacity);
     view.appendChild(glow);
     var starburst = document.createElementNS(namespace, "g");
     view.appendChild(starburst);
@@ -59,7 +60,8 @@ drawFlare(view, {
     toX: 400,
     toY: 225,
     glow: {
-        radius: 200
+        radius: 200,
+        opacity: 0.1
     },
     starburst: {
         sides: 18,
