@@ -20,6 +20,9 @@ function drawFlare(view, flareconfig) {
     var starburst = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, 0);
     starburst.style.fill = "white";
     view.appendChild(starburst);
+    var glint = star(flareconfig.lightx, flareconfig.lighty, flareconfig.glint.sides, flareconfig.glint.innerRadius, flareconfig.glint.outerRadius, 0);
+    glint.style.fill = "white";
+    view.appendChild(glint);
 }
 
 drawFlare(view, {
@@ -31,6 +34,12 @@ drawFlare(view, {
         sides: 18,
         innerRadius: 8,
         outerRadius: 80,
+        rotation: 0
+    },
+    glint: {
+        sides: 69,
+        innerRadius: 5,
+        outerRadius: 69,
         rotation: 0
     }
 });
