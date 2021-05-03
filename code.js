@@ -39,6 +39,18 @@ function drawFlare(view, flareconfig) {
         glint_layer.setAttribute("fill-opacity", 1 / flareconfig.glint.softness);
         glint.appendChild(glint_layer);
     }
+    var ring = document.createElementNS(namespace, "g");
+    view.appendChild(ring);
+    for (var i = 0; i < flareconfig.ring.spread; i++) {
+        var ring_layer = document.createElementNS(namespace, "circle");
+        ring_layer.setAttribute("r", flareconfig.ring.radius - flareconfig.ring.spread + i / 2);
+        ring_layer.setAttribute("opacity", flareconfig.ring.opacity / flareconfig.ring.spread);
+        ring_layer.setAttribute("cx", flareconfig.lightx);
+        ring_layer.setAttribute("cy", flareconfig.lighty);
+        ring_layer.style.fill = "none";
+        ring_layer.setAttribute("stroke", "white");
+        ring.appendChild(ring_layer);
+    }
 }
 
 drawFlare(view, {
@@ -62,6 +74,11 @@ drawFlare(view, {
         outerRadius: 150,
         rotation: 0,
         softness: 50
+    },
+    ring: {
+        radius: 90,
+        spread: 30,
+        opacity: 0.5,
     },
     multiIris: {
         sides: 6,
