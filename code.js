@@ -58,7 +58,7 @@ function drawFlare(view, flareconfig) {
     var colorLayer1 = document.createElementNS(namespace, "rect");
     colorLayer1.setAttribute("x", 0); colorLayer1.setAttribute("y", 0);
     colorLayer1.setAttribute("width", docWidth); colorLayer1.setAttribute("height", docHeight);
-    colorLayer1.style.fill = "#ff6b00";
+    colorLayer1.style.fill = flareconfig.primaryColor;
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
 }
@@ -107,6 +107,7 @@ drawFlare(view, {
     lighty: docHeight * 0.19,
     toX: docWidth * 0.5,
     toY: docHeight * 0.5,
+    primaryColor: "#ff6b00",
     glow: {
         radius: 400,
         opacity: 0.1
