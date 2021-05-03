@@ -17,7 +17,7 @@ svg.appendChild(view);
 
 function drawFlare(view, flareconfig) {
     view.innerHTML = "";
-    var starburst = star(flareconfig.lightx, flareconfig.lighty, flareconfig.star1.sides, flareconfig.star1.innerRadius, flareconfig.star1.outerRadius, 0);
+    var starburst = star(flareconfig.lightx, flareconfig.lighty, flareconfig.starburst.sides, flareconfig.starburst.innerRadius, flareconfig.starburst.outerRadius, 0);
     starburst.style.fill = "white";
     view.appendChild(starburst);
 }
@@ -27,7 +27,7 @@ drawFlare(view, {
     lighty: 100,
     toX: 400,
     toY: 225,
-    star1: {
+    starburst: {
         sides: 18,
         innerRadius: 8,
         outerRadius: 80,
