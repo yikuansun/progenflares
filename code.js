@@ -55,6 +55,12 @@ function drawFlare(view, flareconfig) {
     streak.setAttribute("filter", "url(#streakBlur)");
     document.querySelector("#streakBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.streak.blur);
     view.appendChild(streak);
+    var colorLayer1 = document.createElementNS(namespace, "rect");
+    colorLayer1.setAttribute("x", 0); colorLayer1.setAttribute("y", 0);
+    colorLayer1.setAttribute("width", docWidth); colorLayer1.setAttribute("height", docHeight);
+    colorLayer1.style.fill = "#ff6b00";
+    colorLayer1.style.mixBlendMode = "overlay";
+    view.appendChild(colorLayer1);
 }
 
 function test_svg_download() {
