@@ -66,7 +66,7 @@ function test_svg_download() {
     a.click();
 }
 
-async function pngify(svgElem) {
+async function rasterize(svgElem) {
     var svgData = new XMLSerializer().serializeToString(svgElem);
     var imgElem = document.createElement("img");
     imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
@@ -85,6 +85,15 @@ async function pngify(svgElem) {
         }
     });
     return await myPromise;
+}
+
+function downloadFlare() {
+    rasterize(svg).then((x) => {
+        var a = document.createElement("a");
+        a.href = x;
+        a.download = "joe";
+        a.click();
+    });
 }
 
 drawFlare(view, {
