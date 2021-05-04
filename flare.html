@@ -19,6 +19,21 @@
                     <filter id="MIBlur" x="-100%" y="-100%" width="300%" height="300%">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
                     </filter>
+                    <filter id="MIinnerGlow" x0="-100%" y0="-100%" width="300%" height="300%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"></feGaussianBlur>
+                        <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff"></feComposite>
+                        
+                        <feFlood flood-color="white" flood-opacity="0.75"></feFlood>
+                        <feComposite in2="shadowDiff" operator="in"></feComposite>
+                        <feComposite in2="SourceGraphic" operator="over" result="firstfilter"></feComposite>
+                        
+                        <feGaussianBlur in="firstfilter" stdDeviation="6" result="blur2"></feGaussianBlur>
+                        <feComposite in2="firstfilter" operator="arithmetic" k2="-1" k3="1" result="shadowDiff"></feComposite>
+                        
+                        <feFlood flood-color="white" flood-opacity="0.75"></feFlood>
+                        <feComposite in2="shadowDiff" operator="in"></feComposite>
+                        <feComposite in2="firstfilter" operator="over"></feComposite>
+                    </filter>
                 </defs>
             </svg>
                 </td>

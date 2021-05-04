@@ -61,6 +61,8 @@ function drawFlare(view, flareconfig) {
     colorLayer1.style.fill = flareconfig.primaryColor;
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
+    var multiIris = document.createElementNS(namespace, "g");
+    view.appendChild(multiIris);
     var currentx = 0;
     var currenty = 0;
     for (var i = -25; i < 50; i++) {
@@ -72,10 +74,13 @@ function drawFlare(view, flareconfig) {
             iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
             iris.style.fill = flareconfig.multiIris.color;
             iris.style.mixBlendMode = "screen";
-            iris.setAttribute("filter", "url(#MIBlur)");
+            multiIris.setAttribute("filter", "url(#MIBlur)");
+            iris.setAttribute("filter", "url(#MIinnerGlow)");
+            document.querySelector("#MIinnerGlow feFlood").setAttribute("flood-color", flareconfig.multiIris.color);
+            document.querySelectorAll("#MIinnerGlow feFlood")[1].setAttribute("flood-color", flareconfig.multiIris.color);
             //iris.style.stroke = "white";
             document.querySelector("#MIBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.multiIris.blur);
-            view.appendChild(iris);
+            multiIris.appendChild(iris);
         }
     }
 }
