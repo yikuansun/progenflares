@@ -73,6 +73,7 @@ function drawFlare(view, flareconfig) {
             iris.style.fill = flareconfig.multiIris.color;
             iris.style.mixBlendMode = "screen";
             iris.setAttribute("filter", "url(#MIBlur)");
+            //iris.style.stroke = "white";
             document.querySelector("#MIBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.multiIris.blur);
             view.appendChild(iris);
         }
@@ -152,7 +153,7 @@ drawFlare(view, {
         blur: 6.9
     },
     multiIris: {
-        color: "red",
+        color: "hsl(20deg, 100%, 50%)",
         sides: 6,
         radius: 69,
         rotation: 0,
