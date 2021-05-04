@@ -61,6 +61,8 @@ function drawFlare(view, flareconfig) {
     colorLayer1.style.fill = flareconfig.primaryColor;
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
+    var multiIris = document.createElementNS(namespace, "g");
+    view.appendChild(multiIris);
     var currentx = 0;
     var currenty = 0;
     for (var i = -25; i < 50; i++) {
@@ -75,7 +77,7 @@ function drawFlare(view, flareconfig) {
             iris.setAttribute("filter", "url(#MIBlur)");
             //iris.style.stroke = "white";
             document.querySelector("#MIBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.multiIris.blur);
-            view.appendChild(iris);
+            multiIris.appendChild(iris);
         }
     }
 }
