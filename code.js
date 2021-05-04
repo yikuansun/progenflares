@@ -62,7 +62,6 @@ function drawFlare(view, flareconfig) {
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
     var multiIris = document.createElementNS(namespace, "g");
-    multiIris.setAttribute("opacity", flareconfig.multiIris.opacity);
     view.appendChild(multiIris);
     var currentx = 0;
     var currenty = 0;
@@ -72,7 +71,7 @@ function drawFlare(view, flareconfig) {
         if (Math.random() < 0.35) {
             var sclFac = Math.random() * Math.abs(i) / 25;
             var iris = regpoly(currentx, currenty, flareconfig.multiIris.sides, flareconfig.multiIris.radius * sclFac, flareconfig.multiIris.rotation);
-            iris.setAttribute("fill-opacity", flareconfig.multiIris.innerOpacity / sclFac);
+            iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
             iris.style.fill = flareconfig.multiIris.color;
             iris.style.mixBlendMode = "screen";
             multiIris.setAttribute("filter", "url(#MIBlur)");
@@ -163,8 +162,7 @@ drawFlare(view, {
         sides: 6,
         radius: 69,
         rotation: 0,
-        opacity: 1,
-        innerOpacity: 0.1,
+        opacity: 0.1,
         blur: 2
     },
 });
