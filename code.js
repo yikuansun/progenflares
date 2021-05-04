@@ -61,13 +61,13 @@ function drawFlare(view, flareconfig) {
     colorLayer1.style.fill = flareconfig.primaryColor;
     colorLayer1.style.mixBlendMode = "overlay";
     view.appendChild(colorLayer1);
-    var currentx = flareconfig.lightx;
-    var currenty = flareconfig.lighty;
-    for (var i = 0; i < 50; i++) {
-        currentx += (flareconfig.toX - flareconfig.lightx) / 20;
-        currenty += (flareconfig.toY - flareconfig.lighty) / 20;
+    var currentx = 0;
+    var currenty = 0;
+    for (var i = -25; i < 50; i++) {
+        currentx = flareconfig.lightx + i * (flareconfig.toX - flareconfig.lightx) / 20;
+        currenty = flareconfig.lighty + i * (flareconfig.toY - flareconfig.lighty) / 20;
         if (Math.random() < 0.35) {
-            var sclFac = Math.random() * i / 25;
+            var sclFac = Math.random() * Math.abs(i) / 25;
             var iris = regpoly(currentx, currenty, flareconfig.multiIris.sides, flareconfig.multiIris.radius * sclFac, flareconfig.multiIris.rotation);
             iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
             iris.style.fill = flareconfig.multiIris.color;
