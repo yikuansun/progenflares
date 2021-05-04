@@ -127,7 +127,7 @@ drawFlare(view, {
     primaryColor: "hsl(35deg, 100%, 50%)",
     glow: {
         radius: 400,
-        opacity: 0.1
+        opacity: 0.2
     },
     starburst: {
         sides: 18,
