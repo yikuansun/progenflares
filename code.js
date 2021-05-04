@@ -158,6 +158,6 @@ drawFlare(view, {
         radius: 69,
         rotation: 0,
         opacity: 0.1,
-        blur: 3
+        blur: 2
     },
 });
