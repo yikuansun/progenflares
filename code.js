@@ -165,3 +165,6 @@ drawFlare(view, {
         blur: 2
     },
 });
+
+document.querySelector("#lightx").value = docWidth * 0.19;
+document.querySelector("#lighty").value = docHeight * 0.19;
