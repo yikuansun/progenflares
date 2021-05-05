@@ -156,7 +156,7 @@ function downloadFlare() {
         blur: 6.9
     },
     multiIris: {
-        seed: "123456",
+        seed: 123456,
         color: "hsl(20deg, 100%, 50%)",
         sides: 6,
         radius: 69,
