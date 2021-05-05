@@ -122,7 +122,7 @@ function downloadFlare() {
     });
 }
 
-drawFlare(view, {
+/*drawFlare(view, {
     lightx: docWidth * 0.19,
     lighty: docHeight * 0.19,
     toX: docWidth * 0.5,
@@ -164,7 +164,7 @@ drawFlare(view, {
         opacity: 0.1,
         blur: 2
     },
-});
+});*/
 
 document.querySelector("#lightx").value = docWidth * 0.19;
 document.querySelector("#lighty").value = docHeight * 0.19;
@@ -193,3 +193,5 @@ function drawFromInputs() {
 for (var input of document.querySelectorAll("input")) {
     input.addEventListener("input", drawFromInputs);
 }
+
+drawFromInputs();
