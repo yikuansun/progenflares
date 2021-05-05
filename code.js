@@ -170,3 +170,26 @@ document.querySelector("#lightx").value = docWidth * 0.19;
 document.querySelector("#lighty").value = docHeight * 0.19;
 document.querySelector("#toX").value = docWidth * 0.5;
 document.querySelector("#toY").value = docHeight * 0.5;
+
+function drawFromInputs() {
+    var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{}};
+    for (var input of document.querySelectorAll("input")) {
+        if (!(input.getAttribute("id").includes("_"))) {
+            if (input.getAttribute("type") == "number") inputObject[input.getAttribute("id")] = parseFloat(input.value);
+            else inputObject[input.getAttribute("id")] = input.value;
+        }
+        else {
+            var category = input.getAttribute("id").split("_")[0];
+            var control = input.getAttribute("id").split("_")[1];
+            var value = input.value;
+            var type = input.getAttribute("type");
+            if (type == "number") inputObject[category][control] = parseFloat(value);
+            else inputObject[category][control] = value;
+        }
+    }
+    drawFlare(view, inputObject);
+}
+
+for (var input of document.querySelectorAll("input")) {
+    input.addEventListener("input", drawFromInputs);
+}
