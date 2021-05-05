@@ -225,3 +225,14 @@ for (var i = 0; i < tabs.length; i++) {
         }
     `));
 }
+
+document.querySelector("#exportpanel button").addEventListener("click", function() {
+    switch (document.querySelector("#exportpanel select").value) {
+        case "SVG":
+            test_svg_download();
+            break;
+        case "PNG":
+            downloadFlare();
+            break;
+    }
+});
