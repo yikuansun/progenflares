@@ -63,13 +63,14 @@ function drawFlare(view, flareconfig) {
     view.appendChild(colorLayer1);
     var multiIris = document.createElementNS(namespace, "g");
     view.appendChild(multiIris);
+    var rng = new Math.seedrandom(flareconfig.multiIris.seed);
     var currentx = 0;
     var currenty = 0;
     for (var i = -25; i < 50; i++) {
         currentx = flareconfig.lightx + i * (flareconfig.toX - flareconfig.lightx) / 20;
         currenty = flareconfig.lighty + i * (flareconfig.toY - flareconfig.lighty) / 20;
-        if (Math.random() < 0.35) {
-            var sclFac = Math.random() * Math.abs(i) / 25;
+        if (rng() < 0.35) {
+            var sclFac = rng() * Math.abs(i) / 25;
             var iris = regpoly(currentx, currenty, flareconfig.multiIris.sides, flareconfig.multiIris.radius * sclFac, flareconfig.multiIris.rotation);
             iris.setAttribute("fill-opacity", flareconfig.multiIris.opacity / sclFac);
             iris.style.fill = flareconfig.multiIris.color;
@@ -155,6 +156,7 @@ drawFlare(view, {
         blur: 6.9
     },
     multiIris: {
+        seed: "123456",
         color: "hsl(20deg, 100%, 50%)",
         sides: 6,
         radius: 69,
