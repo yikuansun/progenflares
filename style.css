@@ -1,10 +1,10 @@
 body {
     background-color: #EEEEEE;
+    margin: 0;
 }
 
 #controlpanel {
     background-color: white;
-    height: 100%;
 }
 
 #tabbar {
