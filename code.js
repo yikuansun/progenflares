@@ -195,3 +195,13 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
 }
 
 drawFromInputs();
+
+function Randomizer(inputElem) {
+    inputElem.value = Math.random().toFixed(10).split(".")[1];
+    inputElem.dispatchEvent(new Event("input", {
+        bubbles: true,
+        cancelable: true,
+    }));
+}
+
+document.querySelector("#randomizeMI").addEventListener("click", function() { Randomizer(document.querySelector("#multiIris_seed")); });
