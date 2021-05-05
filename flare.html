@@ -25,50 +25,52 @@
                 </defs>
             </svg>
                 </td>
-                <td style="width: 500px;" id="controlpanel">
-                    <div>
-                        Light X: <input type="number" id="lightx" /><br />
-                        Light Y: <input type="number" id="lighty" /><br />
-                        To X: <input type="number" id="toX" /><br />
-                        To Y: <input type="number" id="toY" /><br />
-                        Primary color: <input type="color" id="primaryColor" value="#ff9500" />
-                    </div>
-                    <div>
-                        Glow radius: <input type="number" id="glow_radius" value="400" /><br />
-                        Glow opacity: <input type="number" id="glow_opacity" value="0.2" step="0.01" />
-                    </div>
-                    <div>
-                        Starburst sides: <input type="number" id="starburst_sides" value="18" /><br />
-                        Starburst inner radius: <input type="number" id="starburst_innerRadius" value="20" /><br />
-                        Starburst outer radius: <input type="number" id="starburst_outerRadius" value="200" /><br />
-                        Starburst angle: <input type="number" id="starburst_rotation" value="0" /><br />
-                        Starburst softness: <input type="number" id="starburst_softness" value="100" />
-                    </div>
-                    <div>
-                        Glint sides: <input type="number" id="glint_sides" value="50" /><br />
-                        Glint inner radius: <input type="number" id="glint_innerRadius" value="10" /><br />
-                        Glint outer radius: <input type="number" id="glint_outerRadius" value="300" /><br />
-                        Glint angle: <input type="number" id="glint_rotation" value="0" /><br />
-                        Glint softness: <input type="number" id="glint_softness" value="50" />
-                    </div>
-                    <div>
-                        Ring radius: <input type="number" id="ring_radius" value="180" /><br />
-                        Ring softness: <input type="number" id="ring_softness" value="10" />
-                    </div>
-                    <div>
-                        Streak length: <input type="number" id="streak_length" value="1000" /><br />
-                        Streak height: <input type="number" id="streak_height" value="15" /><br />
-                        Streak blur: <input type="number" id="streak_blur" value="6.9" step="0.1" />
-                    </div>
-                    <div>
-                        Multi-Iris sides: <input type="number" id="multiIris_sides" value="6" /><br />
-                        Multi-Iris radius: <input type="number" id="multiIris_radius" value="69" /><br />
-                        Multi-Iris blur: <input type="number" id="multiIris_blur" value="2" step="0.1" /><br />
-                        Multi-Iris opacity: <input type="number" id="multiIris_opacity" value="0.1" step="0.01" /><br />
-                        Multi-Iris color: <input type="color" id="multiIris_color" value="#ff5500" /><br />
-                        Multi-Iris rotation: <input type="number" id="multiIris_rotation" value="0" /><br />
-                        Multi-Iris seed: <input type="number" id="multiIris_seed" value="123456" />
-                        <button id="randomizeMI">Randomize</button>
+                <td style="width: 500px;">
+                    <div id="controlpanel">
+                        <div>
+                            Light X: <input type="number" id="lightx" /><br />
+                            Light Y: <input type="number" id="lighty" /><br />
+                            To X: <input type="number" id="toX" /><br />
+                            To Y: <input type="number" id="toY" /><br />
+                            Primary color: <input type="color" id="primaryColor" value="#ff9500" />
+                        </div>
+                        <div>
+                            Glow radius: <input type="number" id="glow_radius" value="400" /><br />
+                            Glow opacity: <input type="number" id="glow_opacity" value="0.2" step="0.01" />
+                        </div>
+                        <div>
+                            Starburst sides: <input type="number" id="starburst_sides" value="18" /><br />
+                            Starburst inner radius: <input type="number" id="starburst_innerRadius" value="20" /><br />
+                            Starburst outer radius: <input type="number" id="starburst_outerRadius" value="200" /><br />
+                            Starburst angle: <input type="number" id="starburst_rotation" value="0" /><br />
+                            Starburst softness: <input type="number" id="starburst_softness" value="100" />
+                        </div>
+                        <div>
+                            Glint sides: <input type="number" id="glint_sides" value="50" /><br />
+                            Glint inner radius: <input type="number" id="glint_innerRadius" value="10" /><br />
+                            Glint outer radius: <input type="number" id="glint_outerRadius" value="300" /><br />
+                            Glint angle: <input type="number" id="glint_rotation" value="0" /><br />
+                            Glint softness: <input type="number" id="glint_softness" value="50" />
+                        </div>
+                        <div>
+                            Ring radius: <input type="number" id="ring_radius" value="180" /><br />
+                            Ring softness: <input type="number" id="ring_softness" value="10" />
+                        </div>
+                        <div>
+                            Streak length: <input type="number" id="streak_length" value="1000" /><br />
+                            Streak height: <input type="number" id="streak_height" value="15" /><br />
+                            Streak blur: <input type="number" id="streak_blur" value="6.9" step="0.1" />
+                        </div>
+                        <div>
+                            Multi-Iris sides: <input type="number" id="multiIris_sides" value="6" /><br />
+                            Multi-Iris radius: <input type="number" id="multiIris_radius" value="69" /><br />
+                            Multi-Iris blur: <input type="number" id="multiIris_blur" value="2" step="0.1" /><br />
+                            Multi-Iris opacity: <input type="number" id="multiIris_opacity" value="0.1" step="0.01" /><br />
+                            Multi-Iris color: <input type="color" id="multiIris_color" value="#ff5500" /><br />
+                            Multi-Iris rotation: <input type="number" id="multiIris_rotation" value="0" /><br />
+                            Multi-Iris seed: <input type="number" id="multiIris_seed" value="123456" />
+                            <button id="randomizeMI">Randomize</button>
+                        </div>
                     </div>
                 </td>
             </tr>
