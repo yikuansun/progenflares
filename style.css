@@ -1,3 +1,27 @@
 body {
     background-color: #EEEEEE;
 }
+
+#controlpanel {
+    background-color: white;
+    height: 100%;
+}
+
+#tabbar {
+    width: 100%;
+    border-spacing: 0;
+}
+
+#tabbar td {
+    padding: 5px;
+    text-align: center;
+    user-select: none;
+}
+
+#tabbar td:hover {
+    background-color: #FAFAFA;
+}
+
+#controlpanel div {
+    display: none;
+}

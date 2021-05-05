@@ -205,3 +205,23 @@ function Randomizer(inputElem) {
 }
 
 document.querySelector("#randomizeMI").addEventListener("click", function() { Randomizer(document.querySelector("#multiIris_seed")); });
+
+var tabs = document.querySelectorAll("#tabbar td");
+tabs[0].style.backgroundColor = "white";
+var panelsections = document.querySelectorAll("#controlpanel div");
+panelsections[0].style.display = "block";
+
+for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", new Function(`
+        for (var j = 0; j < panelsections.length; j++) {
+            if (j == ${i}) {
+                panelsections[j].style.display = "block";
+                tabs[j].style.backgroundColor = "white";
+            }
+            else {
+                panelsections[j].style.display = "none";
+                tabs[j].style.backgroundColor = "";
+            }
+        }
+    `));
+}
