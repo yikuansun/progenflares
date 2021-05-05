@@ -145,6 +145,7 @@ function drawFromInputs() {
         }
     }
     drawFlare(view, inputObject);
+    return inputObject;
 }
 
 for (var input of document.querySelectorAll("#controlpanel input")) {
@@ -190,6 +191,13 @@ document.querySelector("#exportpanel button").addEventListener("click", function
             break;
         case "PNG":
             downloadFlare();
+            break;
+        case "JSON":
+            var saveFile = JSON.stringify(drawFromInputs());
+            var a = document.createElement("a");
+            a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(saveFile);
+            a.download = "flare_data.json";
+            a.click();
             break;
     }
 });
