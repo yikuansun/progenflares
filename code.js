@@ -168,3 +168,5 @@ drawFlare(view, {
 
 document.querySelector("#lightx").value = docWidth * 0.19;
 document.querySelector("#lighty").value = docHeight * 0.19;
+document.querySelector("#toX").value = docWidth * 0.5;
+document.querySelector("#toY").value = docHeight * 0.5;
