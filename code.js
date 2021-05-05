@@ -173,7 +173,7 @@ document.querySelector("#toY").value = docHeight * 0.5;
 
 function drawFromInputs() {
     var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{}};
-    for (var input of document.querySelectorAll("input")) {
+    for (var input of document.querySelectorAll("#controlpanel input")) {
         if (!(input.getAttribute("id").includes("_"))) {
             if (input.getAttribute("type") == "number") inputObject[input.getAttribute("id")] = parseFloat(input.value);
             else inputObject[input.getAttribute("id")] = input.value;
@@ -190,7 +190,7 @@ function drawFromInputs() {
     drawFlare(view, inputObject);
 }
 
-for (var input of document.querySelectorAll("input")) {
+for (var input of document.querySelectorAll("#controlpanel input")) {
     input.addEventListener("input", drawFromInputs);
 }
 
