@@ -168,7 +168,10 @@ function drawFromInputs() {
 }
 
 for (var input of document.querySelectorAll("#controlpanel input")) {
-    input.addEventListener("input", drawFromInputs);
+    input.addEventListener("input", function() {
+        if (this.getAttribute("type") == "number" && parseFloat(this.value) < 0) this.value = 0;
+        drawFromInputs();
+    });
 }
 
 drawFromInputs();
