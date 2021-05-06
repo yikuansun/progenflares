@@ -82,6 +82,25 @@ function drawFlare(view, flareconfig) {
             multiIris.appendChild(iris);
         }
     }
+    var orbs = document.createElementNS(namespace, "g");
+    view.appendChild(orbs);
+    var rng = new Math.seedrandom(flareconfig.orbs.seed);
+    var vector = [0, 0];
+    for (var angle = vector[1]; angle < Math.PI * 2; angle += 0.2) {
+        vector[1] = angle;
+        vector[0] = rng() * flareconfig.orbs.spread;
+        var orb = document.createElementNS(namespace, "circle");
+        orb.setAttribute("cx", flareconfig.lightx + vector[0] * Math.cos(vector[1]));
+        orb.setAttribute("cy", flareconfig.lighty + vector[0] * Math.sin(vector[1]));
+        var sclFac = rng();
+        orb.setAttribute("r", sclFac * flareconfig.orbs.scale);
+        orb.style.fill = flareconfig.orbs.color;
+        orb.setAttribute("fill-opacity", flareconfig.orbs.opacity / sclFac);
+        orb.style.mixBlendMode = "screen";
+        document.querySelector("#orbsBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.orbs.blur);
+        orb.setAttribute("filter", "url(#orbsBlur)");
+        orbs.appendChild(orb);
+    }
 }
 
 function test_svg_download() {
@@ -173,7 +192,7 @@ document.querySelector("#toX").value = docWidth * 0.5;
 document.querySelector("#toY").value = docHeight * 0.5;
 
 function drawFromInputs() {
-    var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{}};
+    var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{},orbs:{}};
     for (var input of document.querySelectorAll("#controlpanel input")) {
         if (!(input.getAttribute("id").includes("_"))) {
             if (input.getAttribute("type") == "number") inputObject[input.getAttribute("id")] = parseFloat(input.value);
@@ -207,6 +226,7 @@ function Randomizer(inputElem) {
 }
 
 document.querySelector("#randomizeMI").addEventListener("click", function() { Randomizer(document.querySelector("#multiIris_seed")); });
+document.querySelector("#randomizedirt").addEventListener("click", function() { Randomizer(document.querySelector("#orbs_seed")); });
 
 var tabs = document.querySelectorAll("#tabbar td");
 tabs[0].style.backgroundColor = "white";
