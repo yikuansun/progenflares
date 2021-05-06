@@ -142,50 +142,6 @@ function downloadFlare() {
     });
 }
 
-/*drawFlare(view, {
-    lightx: docWidth * 0.19,
-    lighty: docHeight * 0.19,
-    toX: docWidth * 0.5,
-    toY: docHeight * 0.5,
-    primaryColor: "hsl(35deg, 100%, 50%)",
-    glow: {
-        radius: 400,
-        opacity: 0.2
-    },
-    starburst: {
-        sides: 18,
-        innerRadius: 20,
-        outerRadius: 200,
-        rotation: 0,
-        softness: 100
-    },
-    glint: {
-        sides: 50,
-        innerRadius: 10,
-        outerRadius: 300,
-        rotation: 0,
-        softness: 50
-    },
-    ring: {
-        radius: 180,
-        softness: 10
-    },
-    streak: {
-        length: 1000,
-        height: 15,
-        blur: 6.9
-    },
-    multiIris: {
-        seed: 123456,
-        color: "hsl(20deg, 100%, 50%)",
-        sides: 6,
-        radius: 69,
-        rotation: 0,
-        opacity: 0.1,
-        blur: 2
-    },
-});*/
-
 document.querySelector("#lightx").value = docWidth * 0.19;
 document.querySelector("#lighty").value = docHeight * 0.19;
 document.querySelector("#toX").value = docWidth * 0.5;
