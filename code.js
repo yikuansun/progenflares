@@ -224,3 +224,10 @@ document.querySelector("#exportpanel button").addEventListener("click", function
             break;
     }
 });
+
+if (portal == "photopea") {
+    rasterize(svg).then(async function(imageURI) {
+        await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+        await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+    });
+}
