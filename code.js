@@ -249,4 +249,7 @@ if (preset) {
         }
     }
     drawFromInputs();
+    if (portal == "api") {
+        window.parent.postMessage(rasterize(svg));
+    }
 }
