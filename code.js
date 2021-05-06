@@ -86,7 +86,7 @@ function drawFlare(view, flareconfig) {
     view.appendChild(orbs);
     var rng = new Math.seedrandom(flareconfig.orbs.seed);
     var vector = [0, 0];
-    for (var angle = vector[1]; angle < Math.PI * 2; angle += 0.2) {
+    for (var angle = vector[1]; angle < Math.PI * 2; angle += 2 * Math.PI / flareconfig.orbs.count) {
         vector[1] = angle;
         vector[0] = rng() * flareconfig.orbs.spread;
         var orb = document.createElementNS(namespace, "circle");
