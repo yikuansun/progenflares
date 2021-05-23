@@ -52,7 +52,8 @@ function drawFlare(view, flareconfig) {
     ring.setAttribute("stroke", "white");
     view.appendChild(ring);
     var streak = document.createElementNS(namespace, "polygon");
-    streak.setAttribute("points", `${flareconfig.lightx},${flareconfig.lighty - flareconfig.streak.height / 2} ${flareconfig.lightx + flareconfig.streak.length / 2},${flareconfig.lighty} ${flareconfig.lightx},${flareconfig.lighty + flareconfig.streak.height / 2} ${flareconfig.lightx - flareconfig.streak.length / 2},${flareconfig.lighty}`);
+    var shift = (flareconfig.toX - flareconfig.lightx) * flareconfig.streak.shift;
+    streak.setAttribute("points", `${flareconfig.lightx},${flareconfig.lighty - flareconfig.streak.height / 2} ${flareconfig.lightx + flareconfig.streak.length / 2 + shift},${flareconfig.lighty} ${flareconfig.lightx},${flareconfig.lighty + flareconfig.streak.height / 2} ${flareconfig.lightx - flareconfig.streak.length / 2 + shift},${flareconfig.lighty}`);
     streak.style.fill = "white";
     streak.setAttribute("filter", "url(#streakBlur)");
     document.querySelector("#streakBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.streak.blur);
