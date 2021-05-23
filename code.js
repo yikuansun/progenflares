@@ -236,6 +236,7 @@ if (portal == "photopea") {
         });
     };
 
+    /*
     // advanced preview
     rasterize(svg).then(async function(imageURI) {
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
@@ -250,6 +251,7 @@ if (portal == "photopea") {
             });
         });
     }
+    */
 }
 
 if (preset) {
