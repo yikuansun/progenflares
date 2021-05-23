@@ -228,8 +228,14 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 });
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "";
-    
+    document.querySelector("#exportpanel").innerHTML = "<button>Add to document</button>";
+    document.querySelector("#exportpanel button").onclick = function() {
+        rasterize(svg).then(async function(imageURI) {
+            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+        });
+    };
+
     // advanced preview
     rasterize(svg).then(async function(imageURI) {
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
