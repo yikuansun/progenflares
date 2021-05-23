@@ -32,3 +32,19 @@ body {
 #exportpanel {
     text-align: center;
 }
+
+#right_cell {
+    width: 417px;
+    vertical-align: top;
+    background-color: white;
+    padding: 0;
+}
+
+@media only screen and (max-width: calc(417px * 2)) {
+    #right_cell, #left_cell {
+        display: table-row!important;
+    }
+    #right_cell {
+        height: 202px;
+    }
+}
