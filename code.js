@@ -235,6 +235,21 @@ if (portal == "photopea") {
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
+
+    // advanced preview
+    for (var input of document.querySelectorAll("#controlpanel input")) {
+        rasterize(svg).then(async function(imageURI) {
+            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+        });
+        input.addEventListener("change", async function() {
+            rasterize(svg).then(async function(imageURI) {
+                await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.remove();");
+                await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+                await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+            });
+        });
+    }
 }
 
 if (preset) {
