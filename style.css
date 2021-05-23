@@ -45,6 +45,10 @@ body {
         display: table-row!important;
     }
     #right_cell {
-        height: 202px;
+        height: 100%;
+    }
+    #top_row {
+        display: table;
+        height: 100%;
     }
 }
