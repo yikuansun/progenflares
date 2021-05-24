@@ -228,30 +228,20 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 });
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "<button>Add to document</button>";
-    document.querySelector("#exportpanel button").onclick = function() {
-        rasterize(svg).then(async function(imageURI) {
-            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-        });
-    };
+    document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button>";
 
-    /*
     // advanced preview
     rasterize(svg).then(async function(imageURI) {
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
         await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
     });
-    for (var input of document.querySelectorAll("#controlpanel input")) {
-        input.addEventListener("change", async function() {
-            rasterize(svg).then(async function(imageURI) {
-                await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.remove();");
-                await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-                await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-            });
+    document.querySelector("#exportpanel button").onclick = function() {
+        rasterize(svg).then(async function(imageURI) {
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.remove();");
+            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
-    }
-    */
+    };
 }
 
 if (preset) {
