@@ -237,8 +237,8 @@ if (portal == "photopea") {
     });
     document.querySelector("#exportpanel button").onclick = function() {
         rasterize(svg).then(async function(imageURI) {
-            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.remove();");
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.merge();");
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
