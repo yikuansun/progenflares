@@ -261,3 +261,22 @@ if (preset) {
         window.parent.postMessage(rasterize(svg));
     }
 }
+
+function posFromCursor(e) {
+    var hitbox = svg.getBoundingClientRect();
+    var truex = e.pageX - hitbox.x;
+    var truey = e.pageY - hitbox.y;
+    var scale = hitbox.width / docWidth;
+    document.querySelector("#lightx").value = truex / scale;
+    document.querySelector("#lighty").value = truey / scale;
+    drawFromInputs();
+}
+
+svg.addEventListener("mousedown", function(e) {
+    posFromCursor(e);
+    this.addEventListener("mousemove", posFromCursor);
+});
+
+svg.addEventListener("mouseup", function() {
+    this.removeEventListener("mousemove", posFromCursor);
+});
