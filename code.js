@@ -264,8 +264,8 @@ if (preset) {
 
 function posFromCursor(e) {
     var hitbox = svg.getBoundingClientRect();
-    var truex = e.pageX - hitbox.x;
-    var truey = e.pageY - hitbox.y;
+    var truex = e.clientX - hitbox.x;
+    var truey = e.clientY - hitbox.y;
     var scale = hitbox.width / docWidth;
     document.querySelector("#lightx").value = truex / scale;
     document.querySelector("#lighty").value = truey / scale;
