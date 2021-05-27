@@ -235,13 +235,13 @@ if (portal == "photopea") {
     rasterize(svg).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-        //await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+        await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
     });
     document.querySelector("#exportpanel button").onclick = function() {
         rasterize(svg).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-            //await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
 }
