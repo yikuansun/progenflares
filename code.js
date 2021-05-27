@@ -227,6 +227,16 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 
+function toArrayBuffer(dataURL) {
+    var base64 = dataURL.split(';base64,')[1];
+    var binary_string = window.atob(base64);
+    var bytes = new Uint8Array(binary_string.length);
+    for (var i = 0; i < binary_string.length; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
 if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button>";
 
@@ -240,7 +250,7 @@ if (portal == "photopea") {
     document.querySelector("#exportpanel button").onclick = function() {
         rasterize(svg).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
-            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.addBinaryAsset(window.parent, toArrayBuffer(imageURI));
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
