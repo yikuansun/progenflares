@@ -231,8 +231,9 @@ if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button>";
 
     // advanced preview
-    var OGstate = await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);");
+    var OGstate = {};
     rasterize(svg).then(async function(imageURI) {
+        OGstate = await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);");
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
         //await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
     });
