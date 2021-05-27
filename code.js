@@ -241,6 +241,9 @@ if (portal == "photopea") {
         rasterize(svg).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            while ((await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0].xK == OGstate.xK) {
+                console.log("tryna prevent bug")
+            }
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
