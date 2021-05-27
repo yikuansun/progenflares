@@ -244,7 +244,7 @@ if (portal == "photopea") {
     var OGstate = {};
     rasterize(svg).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
-        await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+        await Photopea.addBinaryAsset(window.parent, toArrayBuffer(imageURI));
         await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
     });
     document.querySelector("#exportpanel button").onclick = function() {
