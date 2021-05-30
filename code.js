@@ -166,6 +166,9 @@ function drawFromInputs() {
         }
     }
     drawFlare(view, inputObject);
+    rasterize(svg).then(function(imageURI) {
+        document.querySelector("#preview").src = imageURI;
+    });
     return inputObject;
 }
 
@@ -265,7 +268,7 @@ if (preset) {
 }
 
 function posFromCursor(e) {
-    var hitbox = svg.getBoundingClientRect();
+    var hitbox = document.querySelector("#preview").getBoundingClientRect();
     var truex = e.clientX - hitbox.x;
     var truey = e.clientY - hitbox.y;
     var scale = hitbox.width / docWidth;
@@ -274,11 +277,11 @@ function posFromCursor(e) {
     drawFromInputs();
 }
 
-svg.addEventListener("mousedown", function(e) {
+document.querySelector("#preview").addEventListener("mousedown", function(e) {
     posFromCursor(e);
     this.addEventListener("mousemove", posFromCursor);
 });
 
-svg.addEventListener("mouseup", function() {
+document.querySelector("#preview").addEventListener("mouseup", function() {
     this.removeEventListener("mousemove", posFromCursor);
 });
