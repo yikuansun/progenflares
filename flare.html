@@ -9,29 +9,26 @@
         <table style="width: 100vw; height: 100vh; border-spacing: 15px;">
             <tr id="top_row">
                 <td id="left_cell">
-                    <div id="dev_view" style="display: none;">
-                        <svg xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <radialGradient id="glowGradient">
-                                    <stop offset="0%" stop-color="white" />
-                                    <stop offset="100%" stop-color="black" />
-                                </radialGradient>
-                                <filter id="streakBlur" x="-100%" y="-100%" width="300%" height="300%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
-                                </filter>
-                                <filter id="ringBlur" x="-100%" y="-100%" width="300%" height="300%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
-                                </filter>
-                                <filter id="MIBlur" x="-100%" y="-100%" width="300%" height="300%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
-                                </filter>
-                                <filter id="orbsBlur" x="-100%" y="-100%" width="300%" height="300%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                    <img id="preview" draggable="false" />
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="glowGradient">
+                        <stop offset="0%" stop-color="white" />
+                        <stop offset="100%" stop-color="black" />
+                    </radialGradient>
+                    <filter id="streakBlur" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+                    </filter>
+                    <filter id="ringBlur" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+                    </filter>
+                    <filter id="MIBlur" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+                    </filter>
+                    <filter id="orbsBlur" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+                    </filter>
+                </defs>
+            </svg>
                 </td>
                 <td id="right_cell">
                     <table id="tabbar">
