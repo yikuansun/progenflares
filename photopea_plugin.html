@@ -4,22 +4,16 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <form action="flare.html" style="position: fixed; top: 50vh; left: 50vw; transform: translate(-50%, -50%); text-align: center;">
-            Document Width: <input name="docWidth" type="number" value="1920" required /> <br />
-            Document Height: <input name="docHeight" type="number" value="1080" required /> <br />
-            Savedata (optional): <input name="preset" type="text" value="" /> <br />
-            <input name="portal" type="text" value="photopea" style="display: none;" />
-            <input type="submit" value="Start editing" />
-        </form>
+        <div style="position: fixed; top: 50vh; left: 50vw; transform: translate(-50%, -50%); text-align: center;">
+            Open a document first.
+        </div>
         <script src="lib/photopea.js"></script>
         <script>
             (
                 async function() {
                     var w = parseFloat((await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.width.toString());"))[0]);
                     var h = parseFloat((await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.height.toString());"))[0]);
-                    document.querySelector("input[name=docWidth]").value = w;
-                    document.querySelector("input[name=docHeight]").value = h;
-                    document.querySelector("input[type=submit]").click();
+                    location.replace(`flare.html?docWidth=${w}&docHeight=${h}&preset=&portal=photopea`)
                 }
             )();
         </script>
