@@ -234,7 +234,7 @@ if (portal == "photopea") {
 
     // advanced preview
     var OGstate = {};
-    function addLayerAndChangeBlendmode(imageURI) {
+    var addLayerAndChangeBlendmode = async function(imageURI) {
         var layers_count = (await Photopea.runScript(window.parent, `
             function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
         `))[0]; // Script thanks to @hxim
