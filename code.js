@@ -234,45 +234,35 @@ if (portal == "photopea") {
 
     // advanced preview
     var OGstate = {};
+    function addLayerAndChangeBlendmode(imageURI) {
+        var layers_count = (await Photopea.runScript(window.parent, `
+            function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
+        `))[0]; // Script thanks to @hxim
+        var layerCheckInterval = setInterval(async function () {
+            var new_layers_count = (await Photopea.runScript(window.parent, `
+                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
+            `))[0]; // Script thanks to @hxim
+            if (new_layers_count == layers_count + 1) {
+                clearInterval(layerCheckInterval);
+                await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+            }
+        }, 50);
+        await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+    }
     rasterize(svg, (docWidth > 690)?(690 / docWidth):1).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
-        await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-        await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+        addLayerAndChangeBlendmode(imageURI);
     });
     document.querySelector("#exportpanel button").onclick = function() {
         rasterize(svg, (docWidth > 690)?(690 / docWidth):1).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
-            var layers_count = (await Photopea.runScript(window.parent, `
-                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
-            `))[0]; // Script thanks to @hxim
-            var layerCheckInterval = setInterval(async function () {
-                var new_layers_count = (await Photopea.runScript(window.parent, `
-                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
-                `))[0]; // Script thanks to @hxim
-                if (new_layers_count == layers_count + 1) {
-                    clearInterval(layerCheckInterval);
-                    await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-                }
-            }, 50);
-            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            addLayerAndChangeBlendmode(imageURI);
         });
     };
     document.querySelectorAll("#exportpanel button")[1].onclick = function() {
         rasterize(svg, 1).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
-            var layers_count = (await Photopea.runScript(window.parent, `
-                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
-            `))[0]; // Script thanks to @hxim
-            var layerCheckInterval = setInterval(async function () {
-                var new_layers_count = (await Photopea.runScript(window.parent, `
-                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
-                `))[0]; // Script thanks to @hxim
-                if (new_layers_count == layers_count + 1) {
-                    clearInterval(layerCheckInterval);
-                    await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-                }
-            }, 50);
-            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            addLayerAndChangeBlendmode(imageURI);
         });
     };
     for (var input of document.querySelectorAll("#controlpanel input")) {
