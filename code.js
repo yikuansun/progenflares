@@ -245,7 +245,6 @@ if (portal == "photopea") {
             var layers_count = (await Photopea.runScript(window.parent, `
                 function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
             `))[0]; // Script thanks to @hxim
-            console.log(layers_count);
             var layerCheckInterval = setInterval(async function () {
                 var new_layers_count = (await Photopea.runScript(window.parent, `
                     function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
@@ -253,7 +252,6 @@ if (portal == "photopea") {
                 if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
                     await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-                    console.log("changed blend mode");
                 }
             }, 50);
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
@@ -265,7 +263,6 @@ if (portal == "photopea") {
             var layers_count = (await Photopea.runScript(window.parent, `
                 function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
             `))[0]; // Script thanks to @hxim
-            console.log(layers_count);
             var layerCheckInterval = setInterval(async function () {
                 var new_layers_count = (await Photopea.runScript(window.parent, `
                     function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
@@ -273,7 +270,6 @@ if (portal == "photopea") {
                 if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
                     await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-                    console.log("changed blend mode");
                 }
             }, 50);
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
