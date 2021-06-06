@@ -114,15 +114,15 @@ function test_svg_download() {
     a.click();
 }
 
-async function rasterize(svgElem) {
+async function rasterize(svgElem, scale=1) {
     var svgData = new XMLSerializer().serializeToString(svgElem);
     var imgElem = document.createElement("img");
     imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
     const myPromise = new Promise((resolve, reject) => {
         imgElem.onload = function() {
             var svgClientRect = {
-                width: parseFloat(svgElem.getAttribute("viewBox").split(" ")[2]),
-                height: parseFloat(svgElem.getAttribute("viewBox").split(" ")[3])
+                width: parseFloat(svgElem.getAttribute("viewBox").split(" ")[2]) * scale,
+                height: parseFloat(svgElem.getAttribute("viewBox").split(" ")[3]) * scale
             };
             var canvas = document.createElement("canvas");
             canvas.width = svgClientRect.width;
@@ -228,17 +228,24 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 });
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button>";
+    document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button> <button>Finish</button>";
 
     // advanced preview
     var OGstate = {};
-    rasterize(svg).then(async function(imageURI) {
+    rasterize(svg, 1/2).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
         await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
     });
     document.querySelector("#exportpanel button").onclick = function() {
-        rasterize(svg).then(async function(imageURI) {
+        rasterize(svg, 1/2).then(async function(imageURI) {
+            await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
+            await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
+            await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+        });
+    };
+    document.querySelectorAll("#exportpanel button")[1].onclick = function() {
+        rasterize(svg, 1).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
