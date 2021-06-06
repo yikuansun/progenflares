@@ -253,7 +253,7 @@ if (portal == "photopea") {
 
     // advanced preview
     var OGstate = {};
-    rasterize_low_quality(svg).then(async function(imageURI) {
+    rasterize(svg).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
         await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
