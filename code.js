@@ -251,6 +251,12 @@ if (portal == "photopea") {
             await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
         });
     };
+    for (var input of document.querySelectorAll("#controlpanel input")) {
+        input.addEventListener("input", function() {
+            document.querySelector("#exportpanel button").click();
+        });
+        document.querySelector("#exportpanel button").style.display = "none";
+    }
 }
 
 if (preset) {
