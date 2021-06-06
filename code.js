@@ -228,7 +228,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 });
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "<button>Update in document</button> <button>Finish</button>";
+    document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button>";
 
     // advanced preview
     var OGstate = {};
