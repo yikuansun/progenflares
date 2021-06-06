@@ -180,10 +180,12 @@ drawFromInputs();
 
 function Randomizer(inputElem) {
     inputElem.value = Math.random().toFixed(10).split(".")[1];
-    inputElem.dispatchEvent(new Event("input", {
-        bubbles: true,
-        cancelable: true,
-    }));
+    for (var evtType of ["input", "change"]) {
+        inputElem.dispatchEvent(new Event(evtType, {
+            bubbles: true,
+            cancelable: true,
+        }));
+    }
 }
 
 document.querySelector("#randomizeMI").addEventListener("click", function() { Randomizer(document.querySelector("#multiIris_seed")); });
@@ -252,7 +254,7 @@ if (portal == "photopea") {
         });
     };
     for (var input of document.querySelectorAll("#controlpanel input")) {
-        input.addEventListener("input", function() {
+        input.addEventListener("change", function() {
             document.querySelector("#exportpanel button").click();
         });
         document.querySelector("#exportpanel button").style.display = "none";
