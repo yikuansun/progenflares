@@ -267,7 +267,9 @@ if (preset) {
     }
     drawFromInputs();
     if (portal == "api") {
-        window.parent.postMessage(rasterize(svg));
+        rasterize(svg).then(function(imageURI) {
+            window.parent.postMessage(imageURI);
+        });
     }
 }
 
