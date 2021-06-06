@@ -249,7 +249,7 @@ if (portal == "photopea") {
                 var new_layers_count = await Photopea.runScript(window.parent, `
                     function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
                 `); // Script thanks to @hxim
-                if (new_layers_count == layers_count) {
+                if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
                     await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
                     console.log("changed blend mode");
@@ -268,7 +268,7 @@ if (portal == "photopea") {
                 var new_layers_count = await Photopea.runScript(window.parent, `
                     function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
                 `); // Script thanks to @hxim
-                if (new_layers_count == layers_count) {
+                if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
                     await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
                     console.log("changed blend mode");
