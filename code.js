@@ -243,12 +243,12 @@ if (portal == "photopea") {
         rasterize(svg, (docWidth > 690)?(690 / docWidth):1).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             var layers_count = parseFloat(await Photopea.runScript(window.parent, `
-                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
+                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
             `)[0]); // Script thanks to @hxim
             console.log(layers_count);
             var layerCheckInterval = setInterval(async function () {
                 var new_layers_count = parseFloat(await Photopea.runScript(window.parent, `
-                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
+                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
                 `)[0]); // Script thanks to @hxim
                 if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
@@ -263,11 +263,12 @@ if (portal == "photopea") {
         rasterize(svg, 1).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             var layers_count = parseFloat(await Photopea.runScript(window.parent, `
-                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
+                function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
             `)[0]); // Script thanks to @hxim
+            console.log(layers_count);
             var layerCheckInterval = setInterval(async function () {
                 var new_layers_count = parseFloat(await Photopea.runScript(window.parent, `
-                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE("layerCount="+(app.documents.length == 0?0:cnt(app.activeDocument)));
+                    function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
                 `)[0]); // Script thanks to @hxim
                 if (new_layers_count == layers_count + 1) {
                     clearInterval(layerCheckInterval);
