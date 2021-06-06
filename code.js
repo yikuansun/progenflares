@@ -289,6 +289,8 @@ function posFromCursor(e) {
     document.querySelector("#lightx").value = truex / scale;
     document.querySelector("#lighty").value = truey / scale;
     drawFromInputs();
+
+    if (portal == "photopea") document.querySelector("#exportpanel button").click();
 }
 
 svg.addEventListener("mousedown", function(e) {
