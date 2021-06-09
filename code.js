@@ -238,16 +238,18 @@ if (portal == "photopea") {
         var layers_count = (await Photopea.runScript(window.parent, `
             function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
         `))[0]; // Script thanks to @hxim
-        var layerCheckInterval = setInterval(async function () {
+        var layerCheckInterval = async function () {
             var new_layers_count = (await Photopea.runScript(window.parent, `
                 function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
             `))[0]; // Script thanks to @hxim
             if (new_layers_count == layers_count + 1) {
-                clearInterval(layerCheckInterval);
                 await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
                 await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.resize(${100 / previewScale},${100 / previewScale},AnchorPosition.TOPLEFT);`);
+                return;
             }
-        }, 50);
+            else setTimeout(layerCheckInterval, 50);
+        };
+        layerCheckInterval();
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
     }
     var previewScale = (docWidth > 690)?(690 / docWidth):1;
