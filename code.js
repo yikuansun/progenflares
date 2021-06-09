@@ -251,7 +251,7 @@ if (portal == "photopea") {
         };
         layerCheckInterval();
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
-    }
+    };
     var previewScale = (docWidth > 690)?(690 / docWidth):1;
     rasterize(svg, previewScale).then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
