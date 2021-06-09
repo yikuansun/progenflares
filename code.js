@@ -244,8 +244,8 @@ if (portal == "photopea") {
             `))[0]; // Script thanks to @hxim
             if (new_layers_count == layers_count + 1) {
                 clearInterval(layerCheckInterval);
-                await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.resize(${100 / previewScale},${100 / previewScale},AnchorPosition.TOPLEFT);`);
                 await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
+                await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.resize(${100 / previewScale},${100 / previewScale},AnchorPosition.TOPLEFT);`);
             }
         }, 50);
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
