@@ -228,6 +228,9 @@ document.querySelector("#exportpanel button").addEventListener("click", function
             break;
     }
 });
+document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
+    document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
+});
 
 if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button>";
@@ -298,6 +301,20 @@ if (preset) {
             window.parent.postMessage(imageURI);
         });
     }
+}
+else if (document.cookie) {
+    var preset_data = JSON.parse(document.cookie.split("=")[1]);
+    for (var component in preset_data) {
+        if (typeof(preset_data[component]) == "string") {
+            document.querySelector(`#${component}`).value = preset_data[component];
+        }
+        else {
+            for (var jcomponent in preset_data[component]) {
+                document.querySelector(`#${component}_${jcomponent}`).value = preset_data[component][jcomponent];
+            }
+        }
+    }
+    drawFromInputs();
 }
 
 function posFromCursor(e) {
