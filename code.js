@@ -378,3 +378,15 @@ topoint.addEventListener("mousedown", function() {
         document.body.removeEventListener("mousemove", listener);
     })
 });
+document.querySelector("#lightx").addEventListener("input", function() {
+    centerpoint.style.left = `${100 * parseFloat(this.value) / docWidth}%`;
+});
+document.querySelector("#lighty").addEventListener("input", function() {
+    centerpoint.style.top = `${100 * parseFloat(this.value) / docHeight}%`;
+});
+document.querySelector("#toX").addEventListener("input", function() {
+    topoint.style.left = `${100 * parseFloat(this.value) / docWidth}%`;
+});
+document.querySelector("#toY").addEventListener("input", function() {
+    topoint.style.top = `${100 * parseFloat(this.value) / docHeight}%`;
+});
