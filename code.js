@@ -229,7 +229,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
+    Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()));
 });
 
 if (preset) {
@@ -251,8 +251,8 @@ if (preset) {
         });
     }
 }
-else if (document.cookie) {
-    var preset_data = JSON.parse(document.cookie.split("=")[1]);
+else if (Cookies.get("defaultinputs")) {
+    var preset_data = JSON.parse(Cookies.get("defaultinputs"));
     for (var component in preset_data) {
         if (typeof(preset_data[component]) == "string") {
             document.querySelector(`#${component}`).value = preset_data[component];
@@ -317,7 +317,7 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
+        Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()));
     };
 }
 
