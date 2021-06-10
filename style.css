@@ -54,6 +54,7 @@ body {
     border: solid rgb(46, 100, 235) 4px;
     border-radius: 100vmax;
     box-sizing: border-box;
+    transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: calc(417px * 2)) {
