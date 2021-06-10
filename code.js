@@ -232,6 +232,40 @@ document.querySelectorAll("#exportpanel button")[1].addEventListener("click", fu
     document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
 });
 
+if (preset) {
+    var preset_data = JSON.parse(preset);
+    for (var component in preset_data) {
+        if (typeof(preset_data[component]) == "string") {
+            document.querySelector(`#${component}`).value = preset_data[component];
+        }
+        else {
+            for (var jcomponent in preset_data[component]) {
+                document.querySelector(`#${component}_${jcomponent}`).value = preset_data[component][jcomponent];
+            }
+        }
+    }
+    drawFromInputs();
+    if (portal == "api") {
+        rasterize(svg).then(function(imageURI) {
+            window.parent.postMessage(imageURI);
+        });
+    }
+}
+else if (document.cookie) {
+    var preset_data = JSON.parse(document.cookie.split("=")[1]);
+    for (var component in preset_data) {
+        if (typeof(preset_data[component]) == "string") {
+            document.querySelector(`#${component}`).value = preset_data[component];
+        }
+        else {
+            for (var jcomponent in preset_data[component]) {
+                document.querySelector(`#${component}_${jcomponent}`).value = preset_data[component][jcomponent];
+            }
+        }
+    }
+    drawFromInputs();
+}
+
 if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button> <button>Save defaults</button>";
 
@@ -285,40 +319,6 @@ if (portal == "photopea") {
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
         document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
     };
-}
-
-if (preset) {
-    var preset_data = JSON.parse(preset);
-    for (var component in preset_data) {
-        if (typeof(preset_data[component]) == "string") {
-            document.querySelector(`#${component}`).value = preset_data[component];
-        }
-        else {
-            for (var jcomponent in preset_data[component]) {
-                document.querySelector(`#${component}_${jcomponent}`).value = preset_data[component][jcomponent];
-            }
-        }
-    }
-    drawFromInputs();
-    if (portal == "api") {
-        rasterize(svg).then(function(imageURI) {
-            window.parent.postMessage(imageURI);
-        });
-    }
-}
-else if (document.cookie) {
-    var preset_data = JSON.parse(document.cookie.split("=")[1]);
-    for (var component in preset_data) {
-        if (typeof(preset_data[component]) == "string") {
-            document.querySelector(`#${component}`).value = preset_data[component];
-        }
-        else {
-            for (var jcomponent in preset_data[component]) {
-                document.querySelector(`#${component}_${jcomponent}`).value = preset_data[component][jcomponent];
-            }
-        }
-    }
-    drawFromInputs();
 }
 
 function posFromCursor(e) {
