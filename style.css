@@ -40,6 +40,10 @@ body {
     padding: 0;
 }
 
+#leftwrap {
+    position: relative;
+}
+
 @media only screen and (max-width: calc(417px * 2)) {
     #right_cell, #left_cell {
         display: table-row!important;
