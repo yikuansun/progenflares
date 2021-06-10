@@ -326,6 +326,11 @@ function dragFunc(e, target) {
 centerpoint.addEventListener("mousedown", function() {
     var listener = function(e) {
         dragFunc(e, centerpoint);
+        var pos = posFromCursor(e);
+        document.querySelector("#lightx").value = pos[0];
+        document.querySelector("#lighty").value = pos[1];
+        drawFromInputs();
+        e.preventDefault();
     };
     document.body.addEventListener("mousemove", listener);
     this.addEventListener("mouseup", function() {
