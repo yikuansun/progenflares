@@ -229,7 +229,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()));
+    Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
 });
 
 if (preset) {
@@ -317,7 +317,7 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()));
+        Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
     };
 }
 
