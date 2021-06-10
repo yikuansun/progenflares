@@ -55,6 +55,11 @@ body {
     border-radius: 100vmax;
     box-sizing: border-box;
     transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#leftwrap:hover .controlpoint {
+    opacity: 1!important;
 }
 
 @media only screen and (max-width: calc(417px * 2)) {

@@ -313,8 +313,8 @@ function posFromCursor(e) {
 var centerpoint = document.createElement("div");
 centerpoint.className = "controlpoint";
 document.querySelector("#leftwrap").appendChild(centerpoint);
-centerpoint.style.left = "19%";
-centerpoint.style.top = "19%";
+centerpoint.style.left = `${100 * parseFloat(document.querySelector("#lightx").value) / docWidth}%`;
+centerpoint.style.top = `${100 * parseFloat(document.querySelector("#lighty").value) / docHeight}%`;
 
 function dragFunc(e, target) {
     var pos = posFromCursor(e);
