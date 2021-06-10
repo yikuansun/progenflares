@@ -235,7 +235,7 @@ document.querySelectorAll("#exportpanel button")[1].addEventListener("click", fu
 if (preset) {
     var preset_data = JSON.parse(preset);
     for (var component in preset_data) {
-        if (typeof(preset_data[component]) == "string") {
+        if (typeof(preset_data[component]) != "object") {
             document.querySelector(`#${component}`).value = preset_data[component];
         }
         else {
@@ -254,7 +254,7 @@ if (preset) {
 else if (Cookies.get("defaultinputs")) {
     var preset_data = JSON.parse(Cookies.get("defaultinputs"));
     for (var component in preset_data) {
-        if (typeof(preset_data[component]) == "string") {
+        if (typeof(preset_data[component]) != "object") {
             document.querySelector(`#${component}`).value = preset_data[component];
         }
         else {
