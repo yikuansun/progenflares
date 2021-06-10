@@ -51,7 +51,7 @@ body {
     height: 20px;
     top: 0;
     left: 0;
-    border: solid rgb(46, 100, 235) 4px;
+    border: solid #3b7dee 4px;
     border-radius: 100vmax;
     box-sizing: border-box;
     transform: translate(-50%, -50%);
