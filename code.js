@@ -233,7 +233,7 @@ document.querySelectorAll("#exportpanel button")[1].addEventListener("click", fu
 });
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button>";
+    document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button> <button>Save defaults</button>";
 
     // advanced preview
     var OGstate = {};
@@ -281,6 +281,10 @@ if (portal == "photopea") {
     document.querySelector("#leftwrap").addEventListener("mouseup", function() {
         document.querySelector("#exportpanel button").click();
     });
+
+    document.querySelectorAll("#exportpanel button")[2].onclick = function() {
+        document.cookie = `defaultinputs=${JSON.stringify(drawFromInputs())}`;
+    };
 }
 
 if (preset) {
