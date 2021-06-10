@@ -275,7 +275,7 @@ if (portal == "photopea") {
         });
         document.querySelector("#exportpanel button").style.display = "none";
     }
-    svg.addEventListener("mouseup", function() {
+    document.querySelector("#leftwrap").addEventListener("mouseup", function() {
         document.querySelector("#exportpanel button").click();
     });
 }
