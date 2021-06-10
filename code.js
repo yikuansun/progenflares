@@ -305,16 +305,30 @@ function posFromCursor(e) {
     var truex = e.clientX - hitbox.x;
     var truey = e.clientY - hitbox.y;
     var scale = hitbox.width / docWidth;
-    document.querySelector("#lightx").value = truex / scale;
-    document.querySelector("#lighty").value = truey / scale;
-    drawFromInputs();
+    var pointX = truex / scale;
+    var pointY = truey / scale;
+    return [pointX, pointY];
 }
 
-svg.addEventListener("mousedown", function(e) {
-    posFromCursor(e);
-    this.addEventListener("mousemove", posFromCursor);
-});
+var centerpoint = document.createElement("div");
+centerpoint.className = "controlpoint";
+document.querySelector("#leftwrap").appendChild(centerpoint);
+centerpoint.style.left = "19%";
+centerpoint.style.top = "19%";
 
-svg.addEventListener("mouseup", function() {
-    this.removeEventListener("mousemove", posFromCursor);
+function dragFunc(e, target) {
+    var pos = posFromCursor(e);
+    pos[0] = 100 * pos[0] / docWidth;
+    pos[1] = 100 * pos[1] / docHeight;
+    target.style.left = `${pos[0]}%`;
+    target.style.top = `${pos[1]}%`;
+}
+centerpoint.addEventListener("mousedown", function() {
+    var listener = function(e) {
+        dragFunc(e, centerpoint);
+    };
+    document.body.addEventListener("mousemove", listener);
+    this.addEventListener("mouseup", function() {
+        document.body.removeEventListener("mousemove", listener);
+    })
 });
