@@ -4,6 +4,11 @@ var docHeight = parseFloat(searchInfo.get("docHeight"));
 var portal = searchInfo.get("portal");
 var preset = searchInfo.get("preset");
 
+if (isNaN(docWidth) || isNaN(docHeight)) {
+    if (portal != "photopea") location.replace("index.html");
+    else location.replace("photopea_plugin.html");
+}
+
 var svg = document.querySelector("svg");
 var namespace = "http://www.w3.org/2000/svg";
 svg.setAttribute("viewBox", `0 0 ${docWidth} ${docHeight}`);
