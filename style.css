@@ -42,6 +42,7 @@ body {
 
 #leftwrap {
     position: relative;
+    overflow: hidden;
 }
 
 .controlpoint {
