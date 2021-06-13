@@ -240,6 +240,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
     Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
 });
+document.querySelectorAll("#exportpanel button")[2].addEventListener("click", savePreset);
 
 if (preset) {
     var preset_data = JSON.parse(preset);
