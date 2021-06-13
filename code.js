@@ -331,6 +331,9 @@ if (portal == "photopea") {
     document.querySelector("#leftwrap").addEventListener("mouseup", function() {
         document.querySelector("#exportpanel button").click();
     });
+    document.body.addEventListener("drop", function() {
+        document.querySelector("#exportpanel button").click();
+    });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
         Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
