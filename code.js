@@ -216,6 +216,14 @@ for (var i = 0; i < tabs.length; i++) {
     `));
 }
 
+function savePreset() {
+    var saveFile = JSON.stringify(drawFromInputs());
+    var a = document.createElement("a");
+    a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(saveFile);
+    a.download = "flare_data.json";
+    a.click();
+}
+
 document.querySelector("#exportpanel button").addEventListener("click", function() {
     switch (document.querySelector("#exportpanel select").value) {
         case "SVG":
@@ -225,11 +233,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
             downloadFlare();
             break;
         case "JSON":
-            var saveFile = JSON.stringify(drawFromInputs());
-            var a = document.createElement("a");
-            a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(saveFile);
-            a.download = "flare_data.json";
-            a.click();
+            savePreset();
             break;
     }
 });
@@ -272,7 +276,12 @@ else if (Cookies.get("defaultinputs")) {
 }
 
 if (portal == "photopea") {
-    document.querySelector("#exportpanel").innerHTML = "<button>Update live preview</button> <button>Finish</button> <button>Save defaults</button>";
+    document.querySelector("#exportpanel").innerHTML = `
+    <button>Update live preview</button>
+    <button>Finish</button>
+    <button>Save defaults</button>
+    <button>Save preset</button>
+    `;
 
     // advanced preview
     var OGstate = {};
