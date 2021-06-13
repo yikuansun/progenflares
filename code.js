@@ -242,7 +242,7 @@ document.querySelectorAll("#exportpanel button")[1].addEventListener("click", fu
 });
 document.querySelectorAll("#exportpanel button")[2].addEventListener("click", savePreset);
 
-if (preset) {
+function loadPreset(preset="{}") {
     var preset_data = JSON.parse(preset);
     for (var component in preset_data) {
         if (typeof(preset_data[component]) != "object") {
@@ -261,6 +261,7 @@ if (preset) {
         });
     }
 }
+if (preset) loadPreset(preset);
 else if (Cookies.get("defaultinputs")) {
     var preset_data = JSON.parse(Cookies.get("defaultinputs"));
     for (var component in preset_data) {
@@ -348,9 +349,7 @@ document.body.addEventListener("drop", function(e) {
 
             reader.onload = function(e2) {
                 var data = e2.target.result;
-                searchInfo.delete("preset");
-                searchInfo.append("preset", data);
-                location.replace("?" + searchInfo.toString());
+                loadPreset(data);
             }
 
             reader.readAsText(file);
