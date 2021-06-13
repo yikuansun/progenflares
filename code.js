@@ -321,7 +321,6 @@ if (portal == "photopea") {
             addLayerAndChangeBlendmode(imageURI, false);
         });
     };
-    document.querySelectorAll("#exportpanel button")[2].onclick = savePreset;
     for (var input of document.querySelectorAll("#controlpanel input")) {
         input.addEventListener("change", function() {
             document.querySelector("#exportpanel button").click();
@@ -335,6 +334,7 @@ if (portal == "photopea") {
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
         Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
     };
+    document.querySelectorAll("#exportpanel button")[3].onclick = savePreset;
 }
 
 function posFromCursor(e) {
