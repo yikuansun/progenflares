@@ -337,6 +337,28 @@ if (portal == "photopea") {
     document.querySelectorAll("#exportpanel button")[3].onclick = savePreset;
 }
 
+// Handle savedata dragged onto document
+document.body.addEventListener("drop", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    for (var file of e.dataTransfer.files) {
+        if (file.type == "application/json") {
+            var reader = new FileReader();
+
+            reader.onload = function(e2) {
+                var data = e2.target.result;
+                searchInfo.delete("preset");
+                searchInfo.append("preset", data);
+                location.replace("?" + searchInfo.toString());
+            }
+
+            reader.readAsText(file);
+        }
+    }
+});
+document.body.addEventListener("dragover", function(e) { e.preventDefault(); });
+
 function posFromCursor(e) {
     var hitbox = svg.getBoundingClientRect();
     var truex = e.clientX - hitbox.x;
