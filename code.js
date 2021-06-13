@@ -321,6 +321,7 @@ if (portal == "photopea") {
             addLayerAndChangeBlendmode(imageURI, false);
         });
     };
+    document.querySelectorAll("#exportpanel button")[2].onclick = savePreset;
     for (var input of document.querySelectorAll("#controlpanel input")) {
         input.addEventListener("change", function() {
             document.querySelector("#exportpanel button").click();
