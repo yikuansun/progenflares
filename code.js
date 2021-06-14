@@ -179,6 +179,26 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
         if (this.getAttribute("type") == "number" && parseFloat(this.value) < 0) this.value = 0;
         drawFromInputs();
     });
+
+    input.style.cursor = "ew-resize"; // ew
+
+    var lrdrag = function(e) {
+        this.value = parseInt(this.value) + parseInt(e.movementX.toString());
+        this.dispatchEvent(new Event("input", {
+            bubbles: true,
+            cancelable: true,
+        }));
+    }
+    input.addEventListener("mousedown", function() {
+        this.addEventListener("mousemove", lrdrag);
+    });
+    input.addEventListener("mouseup", function() {
+        this.removeEventListener("mousemove", lrdrag);
+        this.dispatchEvent(new Event("change", {
+            bubbles: true,
+            cancelable: true,
+        }));
+    });
 }
 
 drawFromInputs();
