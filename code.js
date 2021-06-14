@@ -183,7 +183,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
     // drag to change value; not good yet, dragging limited to area of box
     input.style.cursor = "ew-resize"; // ew
     var lrdrag = function(e) {
-        this.value = parseInt(this.value) + parseInt(e.movementX.toString());
+        this.value = parseFloat(this.value) + e.movementX * (Boolean(this.step)?(parseFloat(this.step)):(1));
         this.dispatchEvent(new Event("input", {
             bubbles: true,
             cancelable: true,
