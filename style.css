@@ -34,7 +34,7 @@ body {
 }
 
 #right_cell {
-    width: 417px;
+    width: 0;
     vertical-align: top;
     background-color: white;
     padding: 0;
