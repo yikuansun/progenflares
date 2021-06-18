@@ -189,15 +189,20 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
             cancelable: true,
         }));
     }
+    var box_dragging = null;
     input.addEventListener("mousedown", function() {
-        this.addEventListener("mousemove", lrdrag);
+        document.body.onmousemove = lrdrag.bind(this);
+        box_dragging = this;
     });
-    input.addEventListener("mouseup", function() {
-        this.removeEventListener("mousemove", lrdrag);
-        this.dispatchEvent(new Event("change", {
-            bubbles: true,
-            cancelable: true,
-        }));
+    document.body.addEventListener("mouseup", function() {
+        this.onmousemove = function() {  };
+        if (box_dragging) {
+            box_dragging.dispatchEvent(new Event("change", {
+                bubbles: true,
+                cancelable: true,
+            }));
+            box_dragging = null;
+        }
     });
 }
 
