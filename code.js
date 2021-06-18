@@ -193,6 +193,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
     input.addEventListener("mousedown", function() {
         document.body.onmousemove = lrdrag.bind(this);
         box_dragging = this;
+        document.body.style.cursor = "ew-resize";
     });
     document.body.addEventListener("mouseup", function() {
         this.onmousemove = function() {  };
@@ -203,6 +204,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
             }));
             box_dragging = null;
         }
+        this.style.cursor = "";
     });
 }
 
