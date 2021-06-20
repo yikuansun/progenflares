@@ -11,7 +11,8 @@ if (isNaN(docWidth) || isNaN(docHeight)) {
 
 var svg = document.querySelector("svg");
 var namespace = "http://www.w3.org/2000/svg";
-svg.setAttribute("viewBox", `0 0 ${docWidth} ${docHeight}`);
+svg.setAttribute("width", docWidth);
+svg.setAttribute("height", docHeight);
 
 var bgRect = document.createElementNS(namespace, "rect");
 bgRect.setAttribute("x", 0); bgRect.setAttribute("y", 0);
@@ -126,8 +127,8 @@ async function rasterize(svgElem, scale=1) {
     const myPromise = new Promise((resolve, reject) => {
         imgElem.onload = function() {
             var svgClientRect = {
-                width: parseFloat(svgElem.getAttribute("viewBox").split(" ")[2]) * scale,
-                height: parseFloat(svgElem.getAttribute("viewBox").split(" ")[3]) * scale
+                width: parseFloat(svgElem.getAttribute("width")) * scale,
+                height: parseFloat(svgElem.getAttribute("height")) * scale
             };
             var canvas = document.createElement("canvas");
             canvas.width = svgClientRect.width;
