@@ -84,7 +84,7 @@ function drawFlare(view, flareconfig) {
             iris.style.fill = flareconfig.multiIris.color;
             iris.style.mixBlendMode = "screen";
             iris.setAttribute("filter", "url(#MIBlur)");
-            //iris.style.stroke = "white";
+            //iris.style.stroke = flareconfig.multiIris.color;
             document.querySelector("#MIBlur feGaussianBlur").setAttribute("stdDeviation", flareconfig.multiIris.blur);
             multiIris.appendChild(iris);
         }
