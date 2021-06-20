@@ -318,7 +318,7 @@ if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = `
     <button>Update live preview</button>
     <button>Finish</button>
-    <button>Save defaults</button>
+    <button>Set defaults</button>
     <button>Save preset</button>
     `;
 
