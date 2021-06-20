@@ -120,7 +120,7 @@ function test_svg_download() {
     a.click();
 }
 
-async function rasterize(svgElem, scale=1) {
+async function rasterize(svgElem, scale=1, format="png") {
     var svgData = new XMLSerializer().serializeToString(svgElem);
     var imgElem = document.createElement("img");
     imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
@@ -135,14 +135,14 @@ async function rasterize(svgElem, scale=1) {
             canvas.height = svgClientRect.height;
             var ctx = canvas.getContext("2d");
             ctx.drawImage(imgElem, 0, 0, svgClientRect.width, svgClientRect.height);
-            resolve(canvas.toDataURL("image/png"));
+            resolve(canvas.toDataURL("image/" + format));
         }
     });
     return await myPromise;
 }
 
-function downloadFlare() {
-    rasterize(svg).then((x) => {
+function downloadFlare(format="png") {
+    rasterize(svg, 1, format).then((x) => {
         var a = document.createElement("a");
         a.href = x;
         a.download = "joe";
@@ -265,6 +265,9 @@ document.querySelector("#exportpanel button").addEventListener("click", function
             break;
         case "PNG":
             downloadFlare();
+            break;
+        case "JPG":
+            downloadFlare("jpeg");
             break;
         case "JSON":
             savePreset();
