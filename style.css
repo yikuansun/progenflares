@@ -63,6 +63,15 @@ body {
     opacity: 1!important;
 }
 
+svg {
+    display: none;
+}
+
+#imgpreview {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;

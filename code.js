@@ -171,6 +171,10 @@ function drawFromInputs() {
         }
     }
     drawFlare(view, inputObject);
+
+    var svgData = new XMLSerializer().serializeToString(svg);
+    document.querySelector("#imgpreview").src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+    
     return inputObject;
 }
 
@@ -389,7 +393,7 @@ document.body.addEventListener("drop", function(e) {
 document.body.addEventListener("dragover", function(e) { e.preventDefault(); });
 
 function posFromCursor(e) {
-    var hitbox = svg.getBoundingClientRect();
+    var hitbox = document.querySelector("#leftwrap").getBoundingClientRect();
     var truex = e.clientX - hitbox.x;
     var truey = e.clientY - hitbox.y;
     var scale = hitbox.width / docWidth;
