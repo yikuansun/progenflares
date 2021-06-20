@@ -354,7 +354,7 @@ if (portal == "photopea") {
         });
     };
     document.querySelectorAll("#exportpanel button")[1].onclick = function() {
-        rasterize(svg, 1).then(async function(imageURI) {
+        rasterize(svg).then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             addLayerAndChangeBlendmode(imageURI, false);
         });
