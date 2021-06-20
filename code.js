@@ -180,7 +180,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
         drawFromInputs();
     });
 
-    // drag to change value; not good yet, dragging limited to area of box
+    // drag to change value
     input.style.cursor = "ew-resize"; // ew
     var lrdrag = function(e) {
         this.value = parseFloat(this.value) + e.movementX * (Boolean(this.step)?(parseFloat(this.step)):(1));
