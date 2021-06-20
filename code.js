@@ -343,12 +343,12 @@ if (portal == "photopea") {
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
     };
     var previewScale = (docWidth > 690)?(690 / docWidth):1;
-    rasterize(svg, previewScale).then(async function(imageURI) {
+    rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         addLayerAndChangeBlendmode(imageURI);
     });
     document.querySelector("#exportpanel button").onclick = function() {
-        rasterize(svg, previewScale).then(async function(imageURI) {
+        rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
             await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
             addLayerAndChangeBlendmode(imageURI);
         });
