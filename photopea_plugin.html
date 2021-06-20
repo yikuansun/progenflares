@@ -13,7 +13,7 @@
                 async function() {
                     var w = parseFloat((await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.width.toString());"))[0]);
                     var h = parseFloat((await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.height.toString());"))[0]);
-                    location.replace(`flare.html?docWidth=${w}&docHeight=${h}&preset=&portal=photopea`)
+                    location.replace(`flare.html?docWidth=${w}&docHeight=${h}&preset=&portal=photopea`);
                 }
             )();
         </script>
