@@ -72,7 +72,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-@media only screen and (max-width: calc(417px * 2)) {
+@media only screen and (max-width: 690px) {
     #right_cell, #left_cell {
         display: table-row!important;
     }
