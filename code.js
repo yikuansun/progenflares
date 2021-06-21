@@ -403,7 +403,7 @@ function posFromCursor(e) {
     var scale = hitbox.width / docWidth;
     var pointX = truex / scale;
     var pointY = truey / scale;
-    return [pointX, pointY];
+    return [Math.round(pointX), Math.round(pointY)];
 }
 
 var centerpoint = document.createElement("div");
