@@ -341,7 +341,7 @@ if (portal == "photopea") {
         layerCheckInterval();
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
     };
-    var previewScale = 0.2;
+    var previewScale = (docWidth > 400)?(400 / docWidth):1;
     rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         addLayerAndChangeBlendmode(imageURI);
