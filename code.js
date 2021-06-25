@@ -116,7 +116,7 @@ function test_svg_download() {
     var s = (new XMLSerializer()).serializeToString(svg);
     var encodedData = window.btoa(s);
     a.href = "data:image/svg+xml;base64," + encodedData;
-    a.download = "yessir";
+    a.download = "yessir.svg";
     a.click();
 }
 
@@ -145,7 +145,7 @@ function downloadFlare(format="png") {
     rasterize(svg, 1, format).then((x) => {
         var a = document.createElement("a");
         a.href = x;
-        a.download = "joe";
+        a.download = "joe." + format;
         a.click();
     });
 }
