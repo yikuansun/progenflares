@@ -120,22 +120,22 @@ function test_svg_download() {
     a.click();
 }
 
-async function rasterize(svgElem, scale=1, format="png") {
+async function rasterize(svgElem, quality=1, format="png") {
     var svgData = new XMLSerializer().serializeToString(svgElem);
     var imgElem = document.createElement("img");
     imgElem.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
     const myPromise = new Promise((resolve, reject) => {
         imgElem.onload = function() {
             var svgClientRect = {
-                width: parseFloat(svgElem.getAttribute("width")) * scale,
-                height: parseFloat(svgElem.getAttribute("height")) * scale
+                width: parseFloat(svgElem.getAttribute("width")),
+                height: parseFloat(svgElem.getAttribute("height"))
             };
             var canvas = document.createElement("canvas");
             canvas.width = svgClientRect.width;
             canvas.height = svgClientRect.height;
             var ctx = canvas.getContext("2d");
             ctx.drawImage(imgElem, 0, 0, svgClientRect.width, svgClientRect.height);
-            resolve(canvas.toDataURL("image/" + format));
+            resolve(canvas.toDataURL("image/" + format, quality));
         }
     });
     return await myPromise;
@@ -324,7 +324,7 @@ if (portal == "photopea") {
 
     // advanced preview
     var OGstate = {};
-    var addLayerAndChangeBlendmode = async function(imageURI, setScale=true) {
+    var addLayerAndChangeBlendmode = async function(imageURI) {
         var layers_count = (await Photopea.runScript(window.parent, `
             function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
         `))[0]; // Script thanks to @hxim
@@ -334,7 +334,6 @@ if (portal == "photopea") {
             `))[0]; // Script thanks to @hxim
             if (new_layers_count == layers_count + 1) {
                 await Photopea.runScript(window.parent, "app.activeDocument.activeLayer.blendMode = 'lddg';");
-                if (setScale) await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.resize(${100 / previewScale},${100 / previewScale},AnchorPosition.TOPLEFT);`);
                 return;
             }
             else setTimeout(layerCheckInterval, 50);
@@ -342,7 +341,7 @@ if (portal == "photopea") {
         layerCheckInterval();
         await Photopea.runScript(window.parent, `app.open("${imageURI}", null, true);`);
     };
-    var previewScale = (docWidth > 690)?(690 / docWidth):1;
+    var previewScale = 0.5;
     rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
         OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         addLayerAndChangeBlendmode(imageURI);
