@@ -189,6 +189,8 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
         drawFromInputs();
     });
 
+    if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.width = "69px";
+
     /*if (input.tagName == "ADVANCED-SLIDER") {
         // drag to change value
         input.numberElement.style.cursor = "ew-resize"; // ew
