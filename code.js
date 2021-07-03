@@ -150,14 +150,14 @@ function downloadFlare(format="png") {
     });
 }
 
-document.querySelector("#lightx").value = Math.round(docWidth * 0.19);
-document.querySelector("#lighty").value = Math.round(docHeight * 0.19);
 document.querySelector("#lightx").max = docWidth;
 document.querySelector("#lighty").max = docHeight;
-document.querySelector("#toX").value = Math.round(docWidth * 0.5);
-document.querySelector("#toY").value = Math.round(docHeight * 0.5);
+document.querySelector("#lightx").value = Math.round(docWidth * 0.19);
+document.querySelector("#lighty").value = Math.round(docHeight * 0.19);
 document.querySelector("#toX").max = docWidth;
 document.querySelector("#toY").max = docHeight;
+document.querySelector("#toX").value = Math.round(docWidth * 0.5);
+document.querySelector("#toY").value = Math.round(docHeight * 0.5);
 
 function drawFromInputs() {
     var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{},orbs:{}};
