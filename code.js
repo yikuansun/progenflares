@@ -152,14 +152,18 @@ function downloadFlare(format="png") {
 
 document.querySelector("#lightx").value = Math.round(docWidth * 0.19);
 document.querySelector("#lighty").value = Math.round(docHeight * 0.19);
+document.querySelector("#lightx").max = docWidth;
+document.querySelector("#lighty").max = docHeight;
 document.querySelector("#toX").value = Math.round(docWidth * 0.5);
 document.querySelector("#toY").value = Math.round(docHeight * 0.5);
+document.querySelector("#toX").max = docWidth;
+document.querySelector("#toY").max = docHeight;
 
 function drawFromInputs() {
     var inputObject = {glow:{},starburst:{},glint:{},ring:{},streak:{},multiIris:{},orbs:{}};
-    for (var input of document.querySelectorAll("#controlpanel input")) {
+    for (var input of document.querySelectorAll("#controlpanel input, #controlpanel ADVANCED-SLIDER")) {
         if (!(input.getAttribute("id").includes("_"))) {
-            if (input.getAttribute("type") == "number") inputObject[input.getAttribute("id")] = parseFloat(input.value);
+            if (input.getAttribute("type") == "number" || input.tagName == "ADVANCED-SLIDER") inputObject[input.getAttribute("id")] = parseFloat(input.value);
             else inputObject[input.getAttribute("id")] = input.value;
         }
         else {
@@ -167,7 +171,7 @@ function drawFromInputs() {
             var control = input.getAttribute("id").split("_")[1];
             var value = input.value;
             var type = input.getAttribute("type");
-            if (type == "number") inputObject[category][control] = parseFloat(value);
+            if (type == "number" || input.tagName == "ADVANCED-SLIDER") inputObject[category][control] = parseFloat(value);
             else inputObject[category][control] = value;
         }
     }
@@ -179,15 +183,15 @@ function drawFromInputs() {
     return inputObject;
 }
 
-for (var input of document.querySelectorAll("#controlpanel input")) {
+for (var input of document.querySelectorAll("#controlpanel input, #controlpanel ADVANCED-SLIDER")) {
     input.addEventListener("input", function() {
-        if (this.getAttribute("type") == "number" && parseFloat(this.value) < 0) this.value = 0;
+        if (this.tagName == "ADVANCED-SLIDER" && parseFloat(this.value) < 0) this.value = 0;
         drawFromInputs();
     });
 
-    if (input.getAttribute("type") == "number") {
+    /*if (input.tagName == "ADVANCED-SLIDER") {
         // drag to change value
-        input.style.cursor = "ew-resize"; // ew
+        input.numberElement.style.cursor = "ew-resize"; // ew
         var lrdrag = function(e) {
             this.value = parseFloat(this.value) + e.movementX * (Boolean(this.step)?(parseFloat(this.step)):(1));
             this.dispatchEvent(new Event("input", {
@@ -196,7 +200,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
             }));
         }
         var box_dragging = null;
-        input.addEventListener("mousedown", function() {
+        input.numberElement.addEventListener("mousedown", function() {
             document.body.onmousemove = lrdrag.bind(this);
             box_dragging = this;
             document.body.style.cursor = "ew-resize";
@@ -212,7 +216,7 @@ for (var input of document.querySelectorAll("#controlpanel input")) {
             }
             this.style.cursor = "";
         });
-    }
+    }*/
 }
 
 drawFromInputs();
@@ -358,7 +362,7 @@ if (portal == "photopea") {
             addLayerAndChangeBlendmode(imageURI, false);
         });
     };
-    for (var input of document.querySelectorAll("#controlpanel input")) {
+    for (var input of document.querySelectorAll("#controlpanel input, #controlpanel ADVANCED-SLIDER")) {
         input.addEventListener("change", function() {
             document.querySelector("#exportpanel button").click();
         });
