@@ -195,7 +195,7 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
         // drag to change value
         input.numberElement.style.cursor = "ew-resize"; // ew
         var lrdrag = function(e) {
-            this.value = parseFloat(this.value) + e.movementX * (Boolean(this.step)?(parseFloat(this.step)):(1));
+            this.value = parseFloat(this.value) + e.movementX * ((this.step != "null")?(parseFloat(this.step)):(1));
             this.dispatchEvent(new Event("input", {
                 bubbles: true,
                 cancelable: true,
