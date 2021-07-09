@@ -329,7 +329,6 @@ if (portal == "photopea") {
     `;
 
     // advanced preview
-    var OGstate = {};
     var addLayerAndChangeBlendmode = async function(imageURI) {
         var layers_count = (await Photopea.runScript(window.parent, `
             function cnt(d) { var r=0; if (d.layers) { for (var i=0; i<d.layers.length; i++)  r+=cnt(d.layers[i])+1; } return r; } app.echoToOE(cnt(app.activeDocument));
@@ -349,18 +348,17 @@ if (portal == "photopea") {
     };
     var previewScale = (docWidth > 400)?(400 / docWidth):1;
     rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
-        OGstate = (await Photopea.runScript(window.parent, "app.echoToOE(app.activeDocument.activeHistoryState);"))[0];
         addLayerAndChangeBlendmode(imageURI);
     });
     document.querySelector("#exportpanel button").onclick = function() {
         rasterize(svg, previewScale, "jpeg").then(async function(imageURI) {
-            await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
+            await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.remove();`);
             addLayerAndChangeBlendmode(imageURI);
         });
     };
     document.querySelectorAll("#exportpanel button")[1].onclick = function() {
         rasterize(svg).then(async function(imageURI) {
-            await Photopea.runScript(window.parent, `app.activeDocument.activeHistoryState = ${JSON.stringify(OGstate)};`);
+            await Photopea.runScript(window.parent, `app.activeDocument.activeLayer.remove();`);
             addLayerAndChangeBlendmode(imageURI, false);
         });
     };
