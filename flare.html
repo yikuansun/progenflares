@@ -36,14 +36,11 @@
                 <td id="right_cell">
                     <table id="tabbar">
                         <tr>
-                            <td>Global</td>
-                            <td>Glow</td>
-                            <td>Starburst</td>
-                            <td>Glint</td>
-                            <td>Ring</td>
-                            <td>Streak</td>
-                            <td>Multi-Iris</td>
-                            <td>Lens Orbs</td>
+                            <td>Dimensions</td>
+                            <td>Theme</td>
+                            <td>Rays</td>
+                            <td>Lens</td>
+                            <td>Light effects</td>
                         </tr>
                     </table>
                     <div id="controlpanel">
@@ -52,20 +49,24 @@
                             Light Y: <advanced-slider id="lighty" min="0"></advanced-slider><br />
                             To X: <advanced-slider id="toX" min="0"></advanced-slider><br />
                             To Y: <advanced-slider id="toY" max="0"></advanced-slider><br />
-                            Primary color: <input type="color" id="primaryColor" value="#ff9500" />
                         </div>
                         <div>
-                            radius: <advanced-slider id="glow_radius" value="400" min="0" max="1000"></advanced-slider><br />
+                            Glow: <advanced-slider id="glow_radius" value="400" min="0" max="1000"></advanced-slider><br />
                             opacity: <advanced-slider id="glow_opacity" value="0.2" step="0.01" min="0" max="1"></advanced-slider>
+                            <br /><br/>
+                            Primary Color: <input type="color" id="primaryColor" value="#ff9500" /><br />
+                            Iris Color: <input type="color" id="multiIris_color" value="#ff5500" /><br />
+                            Dew<!--Orbs--> Color: <input type="color" id="orbs_color" value="#ff5500" />
                         </div>
                         <div>
+                            <b>Starburst</b><br />
                             sides: <advanced-slider id="starburst_sides" value="18" min="0" max="25"></advanced-slider><br />
                             inner radius: <advanced-slider id="starburst_innerRadius" value="20" min="0" max="100"></advanced-slider><br />
                             outer radius: <advanced-slider id="starburst_outerRadius" value="200" min="0" max="500"></advanced-slider><br />
                             angle: <advanced-slider id="starburst_rotation" value="0" step="0.01" min="0" max="6.25"></advanced-slider><br />
                             softness: <advanced-slider id="starburst_softness" value="100" min="1" max="200"></advanced-slider>
-                        </div>
-                        <div>
+                            <br /><br />
+                            <b>Glint</b><br />
                             sides: <advanced-slider id="glint_sides" value="90" min="0" max="200"></advanced-slider><br />
                             inner radius: <advanced-slider id="glint_innerRadius" value="10" min="0" max="100"></advanced-slider><br />
                             outer radius: <advanced-slider id="glint_outerRadius" value="300" min="0" max="500"></advanced-slider><br />
@@ -73,34 +74,36 @@
                             softness: <advanced-slider id="glint_softness" value="50" min="1" max="200"></advanced-slider>
                         </div>
                         <div>
-                            radius: <advanced-slider id="ring_radius" value="180" min="0" max="300"></advanced-slider><br />
-                            softness: <advanced-slider id="ring_softness" value="10" min="0" max="50"></advanced-slider>
-                        </div>
-                        <div>
+                            <b>Streak</b><br />
                             length: <advanced-slider id="streak_length" value="1000" min="0" max="3000"></advanced-slider><br />
                             height: <advanced-slider id="streak_height" value="15" min="0" max="50"></advanced-slider><br />
                             shift: <advanced-slider id="streak_shift" value="0" step="0.01" min="0" max="0.15"></advanced-slider><br />
                             blur: <advanced-slider id="streak_blur" value="6.9" step="0.1" min="0" max="15"></advanced-slider>
-                        </div>
-                        <div>
-                            sides: <advanced-slider id="multiIris_sides" value="6" min="0" max="10"></advanced-slider><br />
-                            radius: <advanced-slider id="multiIris_radius" value="69" min="0" max="100"></advanced-slider><br />
-                            blur: <advanced-slider id="multiIris_blur" value="2" step="0.1" min="0" max="10"></advanced-slider><br />
-                            opacity: <advanced-slider id="multiIris_opacity" value="0.1" step="0.01" min="0" max="1"></advanced-slider><br />
-                            color: <input type="color" id="multiIris_color" value="#ff5500" /><br />
-                            angle: <advanced-slider id="multiIris_rotation" value="0" step="0.01" min="0" max="6.25"></advanced-slider><br />
-                            seed: <advanced-slider id="multiIris_seed" value="123456" min="0" max="1000000"></advanced-slider>
-                            <button id="randomizeMI">Randomize</button>
-                        </div>
-                        <div>
+                            <br /><br />
+                            <b>Orbs</b><br />
                             scale: <advanced-slider id="orbs_scale" value="100" min="0" max="200"></advanced-slider><br />
                             spread: <advanced-slider id="orbs_spread" value="333" min="0" max="1000"></advanced-slider><br />
                             count: <advanced-slider id="orbs_count" value="31" min="0" max="69"></advanced-slider><br />
                             blur: <advanced-slider id="orbs_blur" value="5" step="0.1" min="0" max="15"></advanced-slider><br />
                             opacity: <advanced-slider id="orbs_opacity" value="0.04" step="0.01" min="0" max="1"></advanced-slider><br />
-                            color: <input type="color" id="orbs_color" value="#ff5500" /><br />
                             seed: <advanced-slider id="orbs_seed" value="123456" min="0" max="1000000"></advanced-slider>
                             <button id="randomizedirt">Randomize</button>
+                        </div>
+                        <div>
+                            <b>Ring</b><br />
+                            radius: <advanced-slider id="ring_radius" value="180" min="0" max="300"></advanced-slider><br />
+                            softness: <advanced-slider id="ring_softness" value="10" min="0" max="50"></advanced-slider>
+                            <br /><br />
+                            <b>Multi-Iris</b><br />
+                            sides: <advanced-slider id="multiIris_sides" value="6" min="0" max="10"></advanced-slider><br />
+                            radius: <advanced-slider id="multiIris_radius" value="69" min="0" max="100"></advanced-slider><br />
+                            blur: <advanced-slider id="multiIris_blur" value="2" step="0.1" min="0" max="10"></advanced-slider><br />
+                            opacity: <advanced-slider id="multiIris_opacity" value="0.1" step="0.01" min="0" max="1"></advanced-slider><br />
+                            angle: <advanced-slider id="multiIris_rotation" value="0" step="0.01" min="0" max="6.25"></advanced-slider><br />
+                            seed: <advanced-slider id="multiIris_seed" value="123456" min="0" max="1000000"></advanced-slider>
+                            <button id="randomizeMI">Randomize</button>
+                        </div>
+                        <div>
                         </div>
                     </div>
                 </td>
