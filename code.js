@@ -209,15 +209,25 @@ document.querySelector("#randomizedirt").addEventListener("click", function() { 
 
 var tabs = document.querySelectorAll("#tabbar td");
 tabs[0].style.backgroundColor = "white";
-var panelsections = document.querySelectorAll("#controlpanel div");
+var panelsections = document.querySelectorAll("#controlpanel div:not(#emptypanelsection)");
 panelsections[0].style.display = "block";
 
 for (var i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", new Function(`
         for (var j = 0; j < panelsections.length; j++) {
             if (j == ${i}) {
-                panelsections[j].style.display = "block";
-                tabs[j].style.backgroundColor = "white";
+                if (panelsections[j].style.display != "block") {
+                    panelsections[j].style.display = "block";
+                    tabs[j].style.backgroundColor = "white";
+
+                    document.querySelector("#emptypanelsection").style.display = "none";
+                }
+                else {
+                    panelsections[j].style.display = "none";
+                    tabs[j].style.backgroundColor = "";
+
+                    document.querySelector("#emptypanelsection").style.display = "block";
+                }
             }
             else {
                 panelsections[j].style.display = "none";
