@@ -266,10 +266,11 @@ document.querySelectorAll("#exportpanel button")[1].addEventListener("click", fu
 });
 document.querySelectorAll("#exportpanel button")[2].addEventListener("click", savePreset);
 
-function loadPreset(preset="{}") {
+function loadPreset(preset="{}", excludePos=false) {
     var preset_data = JSON.parse(preset);
     for (var component in preset_data) {
         if (typeof(preset_data[component]) != "object") {
+            if ((component == "lightx" || component == "toX" || component == "lighty" || component == "toY") && excludePos) continue;
             document.querySelector(`#${component}`).value = preset_data[component];
         }
         else {
@@ -370,7 +371,7 @@ document.body.addEventListener("drop", function(e) {
 
             reader.onload = function(e2) {
                 var data = e2.target.result;
-                loadPreset(data);
+                loadPreset(data, true);
                 if (portal == "photopea") document.querySelector("#exportpanel button").click();
             }
 
