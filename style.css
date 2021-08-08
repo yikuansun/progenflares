@@ -84,7 +84,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-@media only screen and (max-width: 690px) {
+@media (max-aspect-ratio: 1/1) {
     #right_cell, #left_cell {
         display: table-row!important;
     }
