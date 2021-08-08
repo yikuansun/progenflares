@@ -190,35 +190,6 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
     });
 
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.width = "69px";
-
-    /*if (input.tagName == "ADVANCED-SLIDER") {
-        // drag to change value
-        input.numberElement.style.cursor = "ew-resize"; // ew
-        var lrdrag = function(e) {
-            this.value = parseFloat(this.value) + e.movementX * ((this.step != "null")?(parseFloat(this.step)):(1));
-            this.dispatchEvent(new Event("input", {
-                bubbles: true,
-                cancelable: true,
-            }));
-        }
-        var box_dragging = null;
-        input.numberElement.addEventListener("mousedown", function() {
-            document.body.onmousemove = lrdrag.bind(this);
-            box_dragging = this;
-            document.body.style.cursor = "ew-resize";
-        });
-        document.body.addEventListener("mouseup", function() {
-            this.onmousemove = function() {  };
-            if (box_dragging) {
-                box_dragging.dispatchEvent(new Event("change", {
-                    bubbles: true,
-                    cancelable: true,
-                }));
-                box_dragging = null;
-            }
-            this.style.cursor = "";
-        });
-    }*/
 }
 
 drawFromInputs();
