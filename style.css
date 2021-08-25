@@ -28,7 +28,7 @@ body {
     padding: 7px;
     text-align: center;
     user-select: none;
-    transition: color 1s;
+    transition: color 0.69s;
 }
 
 #tabbar td:hover {
