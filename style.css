@@ -19,8 +19,9 @@ body {
 #tabbar {
     width: 100%;
     border-spacing: 0;
-    background-color: var(--ui-secondary-color);
+    background-color: var(--ui-tertiary-color);
     border-bottom: 10px solid var(--ui-secondary-color);
+    color: grey;
 }
 
 #tabbar td {

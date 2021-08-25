@@ -208,7 +208,7 @@ document.querySelector("#randomizeMI").addEventListener("click", function() { Ra
 document.querySelector("#randomizedirt").addEventListener("click", function() { Randomizer(document.querySelector("#orbs_seed")); });
 
 var tabs = document.querySelectorAll("#tabbar td");
-tabs[0].style.backgroundColor = "var(--ui-tertiary-color)";
+tabs[0].style.color = "white";
 var panelsections = document.querySelectorAll("#controlpanel div:not(#emptypanelsection)");
 panelsections[0].style.display = "block";
 
@@ -218,20 +218,20 @@ for (var i = 0; i < tabs.length; i++) {
             if (j == ${i}) {
                 if (panelsections[j].style.display != "block") {
                     panelsections[j].style.display = "block";
-                    tabs[j].style.backgroundColor = "var(--ui-tertiary-color)";
+                    tabs[j].style.color = "white";
 
                     document.querySelector("#emptypanelsection").style.display = "none";
                 }
                 else {
                     panelsections[j].style.display = "none";
-                    tabs[j].style.backgroundColor = "";
+                    tabs[j].style.color = "grey";
 
                     document.querySelector("#emptypanelsection").style.display = "block";
                 }
             }
             else {
                 panelsections[j].style.display = "none";
-                tabs[j].style.backgroundColor = "";
+                tabs[j].style.color = "grey";
             }
         }
     `));
