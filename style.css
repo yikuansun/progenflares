@@ -5,27 +5,30 @@
 }
 
 body {
-    background-color: var(--ui-secondary-color);
+    background-color: #EEEEEE;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    color: whitesmoke;
 }
 
 #controlpanel {
-    background-color: var(--ui-tertiary-color);
+    background-color: white;
     width: 362px;
 }
 
 #tabbar {
     width: 100%;
     border-spacing: 0;
-    background-color: var(--ui-secondary-color);
+    background-color: #EEEEEE;
 }
 
 #tabbar td {
     padding: 5px;
     text-align: center;
     user-select: none;
+}
+
+#tabbar td:hover {
+    background-color: #FAFAFA;
 }
 
 #controlpanel div {
@@ -41,7 +44,7 @@ body {
 #right_cell {
     width: 0;
     vertical-align: top;
-    background-color: var(--ui-tertiary-color);
+    background-color: white;
     padding: 0;
 }
 
@@ -52,7 +55,7 @@ body {
 
 .controlpoint {
     position: absolute;
-    background-color: var(--ui-tertiary-color);
+    background-color: white;
     width: 20px;
     height: 20px;
     top: 0;
