@@ -9,6 +9,12 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: whitesmoke;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #controlpanel {
