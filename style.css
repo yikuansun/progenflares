@@ -28,6 +28,11 @@ body {
     padding: 7px;
     text-align: center;
     user-select: none;
+    transition: color 1s;
+}
+
+#tabbar td:hover {
+    color: white;
 }
 
 #controlpanel div {

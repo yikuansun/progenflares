@@ -224,14 +224,14 @@ for (var i = 0; i < tabs.length; i++) {
                 }
                 else {
                     panelsections[j].style.display = "none";
-                    tabs[j].style.color = "grey";
+                    tabs[j].style.color = "";
 
                     document.querySelector("#emptypanelsection").style.display = "block";
                 }
             }
             else {
                 panelsections[j].style.display = "none";
-                tabs[j].style.color = "grey";
+                tabs[j].style.color = "";
             }
         }
     `));
