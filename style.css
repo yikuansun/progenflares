@@ -52,7 +52,7 @@ body {
 
 .controlpoint {
     position: absolute;
-    background-color: var(--ui-tertiary-color);
+    background-color: white;
     width: 20px;
     height: 20px;
     top: 0;
