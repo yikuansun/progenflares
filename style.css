@@ -1,3 +1,9 @@
+:root {
+    --ui-primary-color: #FF9E0F;
+    --ui-secondary-color: #1F1F1F;
+    --ui-tertiary-color: #1A1A1A;
+}
+
 body {
     background-color: #EEEEEE;
     margin: 0;
