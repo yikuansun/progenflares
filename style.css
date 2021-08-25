@@ -87,14 +87,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-input[type=submit], button, select {
-    background-color: var(--ui-primary-color);
-    color: whitesmoke;
-    border: 0;
-    padding: 5px;
-    margin: 2px;
-}
-
 @media only screen and (max-width: 690px) {
     #right_cell, #left_cell {
         display: table-row!important;
