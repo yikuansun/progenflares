@@ -68,7 +68,7 @@ function drawFlare(view, flareconfig) {
     colorLayer1.setAttribute("x", 0); colorLayer1.setAttribute("y", 0);
     colorLayer1.setAttribute("width", docWidth); colorLayer1.setAttribute("height", docHeight);
     colorLayer1.style.fill = flareconfig.primaryColor;
-    colorLayer1.style.mixBlendMode = "overlay";
+    colorLayer1.style.mixBlendMode = "soft-light";
     view.appendChild(colorLayer1);
     var multiIris = document.createElementNS(namespace, "g");
     view.appendChild(multiIris);
