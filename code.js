@@ -264,7 +264,9 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
+    fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+        loadPreset(data);
+    });
 });
 document.querySelectorAll("#savepresetbutton")[0].addEventListener("click", savePreset);
 
@@ -308,7 +310,7 @@ if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = `
     <button>Update live preview</button>
     <button>Finish</button>
-    <button>Set defaults</button>
+    <button>Reset</button>
     `;
 
     // advanced preview
@@ -356,7 +358,9 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
+        fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+            loadPreset(data);
+        });
     };
 }
 
