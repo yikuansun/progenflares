@@ -266,7 +266,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
     Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
 });
-document.querySelectorAll("#exportpanel button")[2].addEventListener("click", savePreset);
+document.querySelectorAll("#savepresetbutton")[0].addEventListener("click", savePreset);
 
 function loadPreset(preset="{}", excludePos=false) {
     var preset_data = JSON.parse(preset);
@@ -309,7 +309,6 @@ if (portal == "photopea") {
     <button>Update live preview</button>
     <button>Finish</button>
     <button>Set defaults</button>
-    <button>Save preset</button>
     `;
 
     // advanced preview
@@ -359,7 +358,6 @@ if (portal == "photopea") {
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
         Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
     };
-    document.querySelectorAll("#exportpanel button")[3].onclick = savePreset;
 }
 
 // Handle savedata dragged onto document
