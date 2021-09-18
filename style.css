@@ -110,6 +110,10 @@ input[type=submit], button, select {
     margin: 2px;
 }
 
+input[type=color] {
+    background-color: var(--ui-secondary-color);
+}
+
 @media only screen and (max-width: 690px) {
     #right_cell, #left_cell {
         display: table-row!important;
