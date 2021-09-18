@@ -264,7 +264,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+    fetch("presets/sun flare.json").then(response => response.text()).then(function(data) {
         loadPreset(data);
     });
 });
@@ -358,7 +358,7 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+        fetch("presets/sun flare.json").then(response => response.text()).then(function(data) {
             loadPreset(data);
         });
     };
