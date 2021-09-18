@@ -190,6 +190,8 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
     });
 
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.width = "69px";
+    if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.backgroundColor = "var(--ui-secondary-color)";
+    if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.color = "var(--ui-primary-color)";
 }
 
 drawFromInputs();
@@ -208,7 +210,7 @@ document.querySelector("#randomizeMI").addEventListener("click", function() { Ra
 document.querySelector("#randomizedirt").addEventListener("click", function() { Randomizer(document.querySelector("#orbs_seed")); });
 
 var tabs = document.querySelectorAll("#tabbar td");
-tabs[0].style.backgroundColor = "white";
+tabs[0].style.color = "white";
 var panelsections = document.querySelectorAll("#controlpanel div:not(#emptypanelsection)");
 panelsections[0].style.display = "block";
 
@@ -218,20 +220,20 @@ for (var i = 0; i < tabs.length; i++) {
             if (j == ${i}) {
                 if (panelsections[j].style.display != "block") {
                     panelsections[j].style.display = "block";
-                    tabs[j].style.backgroundColor = "white";
+                    tabs[j].style.color = "white";
 
                     document.querySelector("#emptypanelsection").style.display = "none";
                 }
                 else {
                     panelsections[j].style.display = "none";
-                    tabs[j].style.backgroundColor = "";
+                    tabs[j].style.color = "";
 
                     document.querySelector("#emptypanelsection").style.display = "block";
                 }
             }
             else {
                 panelsections[j].style.display = "none";
-                tabs[j].style.backgroundColor = "";
+                tabs[j].style.color = "";
             }
         }
     `));
@@ -262,9 +264,11 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
+    fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+        loadPreset(data);
+    });
 });
-document.querySelectorAll("#exportpanel button")[2].addEventListener("click", savePreset);
+document.querySelectorAll("#savepresetbutton")[0].addEventListener("click", savePreset);
 
 function loadPreset(preset="{}", excludePos=false) {
     var preset_data = JSON.parse(preset);
@@ -306,8 +310,7 @@ if (portal == "photopea") {
     document.querySelector("#exportpanel").innerHTML = `
     <button>Update live preview</button>
     <button>Finish</button>
-    <button>Set defaults</button>
-    <button>Save preset</button>
+    <button>Reset</button>
     `;
 
     // advanced preview
@@ -355,9 +358,10 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        Cookies.set("defaultinputs", JSON.stringify(drawFromInputs()), { expires: 69696969 });
+        fetch("presets/sun flare.json").then(response => response.json()).then(function(data) {
+            loadPreset(data);
+        });
     };
-    document.querySelectorAll("#exportpanel button")[3].onclick = savePreset;
 }
 
 // Handle savedata dragged onto document

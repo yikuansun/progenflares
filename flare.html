@@ -51,12 +51,14 @@
                             To Y: <advanced-slider id="toY" max="0"></advanced-slider><br />
                         </div>
                         <div>
-                            Glow: <advanced-slider id="glow_radius" value="400" min="0" max="1000"></advanced-slider><br />
-                            opacity: <advanced-slider id="glow_opacity" value="0.2" step="0.01" min="0" max="1"></advanced-slider>
+                            <b>Glow</b><br />
+                            Radius: <advanced-slider id="glow_radius" value="400" min="0" max="1000"></advanced-slider><br />
+                            Opacity: <advanced-slider id="glow_opacity" value="0.2" step="0.01" min="0" max="1"></advanced-slider>
                             <br /><br/>
+                            <b>Colors</b><br />
                             Primary Color: <input type="color" id="primaryColor" value="#ff9500" /><br />
                             Iris Color: <input type="color" id="multiIris_color" value="#ff5500" /><br />
-                            Dew<!--Orbs--> Color: <input type="color" id="orbs_color" value="#ff5500" />
+                            Orbs Color: <input type="color" id="orbs_color" value="#ff5500" />
                         </div>
                         <div>
                             <b>Starburst</b><br />
@@ -103,8 +105,10 @@
                             seed: <advanced-slider id="multiIris_seed" value="123456" min="0" max="1000000"></advanced-slider>
                             <button id="randomizeMI">Randomize</button>
                         </div>
-                        <div id="emptypanelsection">
-                            Drag and drop presets
+                        <div id="emptypanelsection" style="text-align: center;">
+                            <img src="images/drag and drop.svg" style="max-width: 100%; max-height: 100%; filter: brightness(0.5);" />
+                            <br />Drag and drop presets
+                            <br /><br /><button id="savepresetbutton">Save Current Preset</button>
                         </div>
                     </div>
                 </td>
@@ -123,8 +127,7 @@
                     <button>Download</button>
                     <br />
                     <br />
-                    <button>Set defaults</button>
-                    <button>Save preset</button>
+                    <button>Reset</button>
                 </td>
             </tr>
         </table>
