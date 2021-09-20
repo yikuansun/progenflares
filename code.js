@@ -192,6 +192,7 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.width = "69px";
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.backgroundColor = "var(--ui-secondary-color)";
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.color = "var(--ui-primary-color)";
+    if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.filter = "hue-rotate(185deg)";
 }
 
 drawFromInputs();
