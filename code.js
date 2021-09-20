@@ -247,6 +247,13 @@ function savePreset() {
     a.click();
 }
 
+function resetGUI() {
+    loadPreset(
+        `{"glow":{"radius":400,"opacity":0.2},"starburst":{"sides":18,"innerRadius":20,"outerRadius":200,"rotation":0,"softness":100},"glint":{"sides":90,"innerRadius":10,"outerRadius":300,"rotation":0,"softness":50},"ring":{"radius":180,"softness":10},"streak":{"length":1000,"height":15,"shift":0,"blur":6.9},"multiIris":{"color":"#ff5500","sides":6,"radius":69,"blur":2,"opacity":0.1,"rotation":0,"seed":123456},"orbs":{"color":"#ff5500","scale":100,"spread":333,"count":31,"blur":5,"opacity":0.04,"seed":123456},"lightx":365,"lighty":205,"toX":960,"toY":540,"primaryColor":"#ff9500"}`,
+        true
+    );
+}
+
 document.querySelector("#exportpanel button").addEventListener("click", function() {
     switch (document.querySelector("#exportpanel select").value) {
         case "SVG":
@@ -264,9 +271,7 @@ document.querySelector("#exportpanel button").addEventListener("click", function
     }
 });
 document.querySelectorAll("#exportpanel button")[1].addEventListener("click", function() {
-    fetch("presets/sun flare.json").then(response => response.text()).then(function(data) {
-        loadPreset(data);
-    });
+    resetGUI();
 });
 document.querySelectorAll("#savepresetbutton")[0].addEventListener("click", savePreset);
 
@@ -358,9 +363,7 @@ if (portal == "photopea") {
     });
 
     document.querySelectorAll("#exportpanel button")[2].onclick = function() {
-        fetch("presets/sun flare.json").then(response => response.text()).then(function(data) {
-            loadPreset(data);
-        });
+        resetGUI();
     };
 }
 
