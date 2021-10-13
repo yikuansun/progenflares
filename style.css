@@ -20,6 +20,8 @@ body::-webkit-scrollbar {
 #controlpanel {
     background-color: var(--ui-tertiary-color);
     width: 362px;
+    height: 100%;
+    overflow-y: auto;
 }
 
 #tabbar {
@@ -53,6 +55,7 @@ body::-webkit-scrollbar {
 
 #right_cell {
     width: 0;
+    height: 100%;
     vertical-align: top;
     background-color: var(--ui-tertiary-color);
     padding: 0;
@@ -124,5 +127,8 @@ input[type=color] {
     #top_row {
         display: table;
         height: 100%;
+    }
+    #controlpanel {
+        width: 100%!important;
     }
 }
