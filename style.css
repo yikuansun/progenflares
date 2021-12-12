@@ -141,7 +141,7 @@ input[type=color] {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
 
 ::-webkit-scrollbar-track {
@@ -151,8 +151,12 @@ input[type=color] {
 ::-webkit-scrollbar-thumb {
     background: #696969;
     border-radius: 10px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #454545;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
 }
