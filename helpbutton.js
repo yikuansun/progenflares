@@ -1,7 +1,7 @@
 var helpbutton = document.createElement("div");
 document.body.appendChild(helpbutton);
-helpbutton.style.width = "30px";
-helpbutton.style.height = "30px";
+helpbutton.style.width = "40px";
+helpbutton.style.height = "40px";
 helpbutton.style.position = "fixed";
 helpbutton.style.bottom = "10px";
 helpbutton.style.right = "10px";
