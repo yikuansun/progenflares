@@ -254,6 +254,10 @@ function resetGUI() {
         `{"glow":{"radius":400,"opacity":0.2},"starburst":{"sides":18,"innerRadius":20,"outerRadius":200,"rotation":0,"softness":100},"glint":{"sides":90,"innerRadius":10,"outerRadius":300,"rotation":0,"softness":50},"ring":{"radius":180,"softness":10},"streak":{"length":1000,"height":15,"shift":0,"blur":6.9},"multiIris":{"color":"#ff5500","sides":6,"radius":69,"blur":2,"opacity":0.1,"rotation":0,"seed":123456},"orbs":{"color":"#ff5500","scale":100,"spread":333,"count":31,"blur":5,"opacity":0.04,"seed":123456},"lightx":${Math.round(docWidth * 0.19)},"lighty":${Math.round(docHeight * 0.19)},"toX":${Math.round(docWidth / 2)},"toY":${Math.round(docHeight / 2)},"primaryColor":"#ff9500"}`,
         false
     );
+    document.querySelector("#lightx").dispatchEvent(new Event("change", {
+        bubbles: true,
+        cancelable: true,
+    }));
 }
 
 document.querySelector("#exportpanel button").addEventListener("click", function() {
