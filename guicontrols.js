@@ -56,15 +56,15 @@ topoint.addEventListener("mousedown", function() {
         document.body.removeEventListener("mousemove", listener);
     })
 });
-document.querySelector("#lightx").addEventListener("input", function() {
+document.querySelector("#lightx").addEventListener("change", function() {
     centerpoint.style.left = `${100 * parseFloat(this.value) / docWidth}%`;
 });
-document.querySelector("#lighty").addEventListener("input", function() {
+document.querySelector("#lighty").addEventListener("change", function() {
     centerpoint.style.top = `${100 * parseFloat(this.value) / docHeight}%`;
 });
-document.querySelector("#toX").addEventListener("input", function() {
+document.querySelector("#toX").addEventListener("change", function() {
     topoint.style.left = `${100 * parseFloat(this.value) / docWidth}%`;
 });
-document.querySelector("#toY").addEventListener("input", function() {
+document.querySelector("#toY").addEventListener("change", function() {
     topoint.style.top = `${100 * parseFloat(this.value) / docHeight}%`;
 });
