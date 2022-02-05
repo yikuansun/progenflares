@@ -112,11 +112,23 @@ input[type=number], input[type=text] {
 }
 
 input[type=submit], button, select {
-    background-color: var(--ui-primary-color);
-    color: whitesmoke;
+    outline: 1.5px var(--ui-primary-color) solid;
+    outline-offset: -1.5px;
+    background-color: transparent;
+    color: var(--ui-primary-color);
     border: 0;
     padding: 6.9px;
     margin: 2px;
+    transition: opacity 0.69s;
+}
+
+input[type=submit]:hover, button:hover, select:hover {
+    opacity: 0.5;
+}
+
+option {
+    color: var(--ui-primary-color);
+    background-color: var(--ui-secondary-color);
 }
 
 input[type=color] {
