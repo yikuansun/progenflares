@@ -109,6 +109,7 @@ input[type=number], input[type=text] {
   -moz-appearance: textfield;
   background-color: var(--ui-secondary-color);
   color: var(--ui-primary-color);
+  outline: none;
 }
 
 input[type=submit], button, select {
@@ -122,7 +123,7 @@ input[type=submit], button, select {
     transition: opacity 0.69s;
 }
 
-input[type=submit]:hover, button:hover, select:hover {
+input[type=submit]:hover, button:hover, select:hover, select:focus {
     opacity: 0.5;
 }
 
