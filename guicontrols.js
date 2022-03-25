@@ -74,7 +74,7 @@ fetch("presetlibrary.json").then(x => x.json()).then(function(data) {
     var gallery = document.querySelector("#presetlib");
     gallery.style.textAlign = "center";
     for (var presetName in data) {
-        var img = new Image(90, 90);
+        var img = new Image(96, 96);
         gallery.appendChild(img);
         img.src = "images/previews/" + presetName + ".jpg";
         img.style.padding = "5px";
