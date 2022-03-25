@@ -111,6 +111,7 @@ input[type=number], input[type=text] {
   background-color: var(--ui-secondary-color);
   color: var(--ui-primary-color);
   outline: none;
+  border: 1px solid grey;
 }
 
 input[type=submit], button, select {

@@ -193,6 +193,7 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.backgroundColor = "var(--ui-secondary-color)";
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.color = "var(--ui-primary-color)";
     if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.outline = "none";
+    if (input.tagName == "ADVANCED-SLIDER") input.numberElement.style.border = "1px solid grey";
     if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.outline = "none";
     if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.accentColor = "var(--ui-primary-color)";
     if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.width = "90px";
