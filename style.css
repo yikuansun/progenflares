@@ -50,7 +50,7 @@ body::-webkit-scrollbar {
     padding: 10px;
     overflow-y: auto;
     position: relative;
-    line-height: 25px;
+    line-height: 28px;
 }
 
 #exportpanel {

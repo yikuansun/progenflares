@@ -198,7 +198,6 @@ for (var input of document.querySelectorAll("#controlpanel input, #controlpanel 
     if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.accentColor = "var(--ui-primary-color)";
     if (input.tagName == "ADVANCED-SLIDER") input.rangeElement.style.width = "90px";
     input.style.float = "right";
-    input.style.height = "25px";
 }
 
 drawFromInputs();
