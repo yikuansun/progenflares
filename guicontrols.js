@@ -68,3 +68,28 @@ document.querySelector("#toX").addEventListener("change", function() {
 document.querySelector("#toY").addEventListener("change", function() {
     topoint.style.top = `${100 * parseFloat(this.value) / docHeight}%`;
 });
+
+fetch("presetlibrary.json").then(x => x.json()).then(function(data) {
+    console.log(data);
+    var gallery = document.querySelector("#presetlib");
+    gallery.style.textAlign = "center";
+    for (var presetName in data) {
+        var img = new Image(90, 90);
+        gallery.appendChild(img);
+        img.src = "images/previews/" + presetName + ".jpg";
+        img.style.padding = "5px";
+        img.style.verticalAlign = "bottom";
+        img.setAttribute("draggable", "false");
+        img.style.backgroundColor = "#111111";
+        img.addEventListener("mouseover", function() {
+            this.style.backgroundColor = "#333333";
+        });
+        img.addEventListener("mouseout", function() {
+            this.style.backgroundColor = "#111111";
+        });
+        img.dataset.corres = JSON.stringify(data[presetName]);
+        img.addEventListener("click", function() {
+            loadPreset(this.dataset.corres, true);
+        });
+    }
+});
