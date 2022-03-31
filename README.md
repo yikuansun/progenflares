@@ -30,4 +30,4 @@ Fill in document width and height and press "Start editing." In the right panel,
 ## Authors
 
  - Developed by [@yikuansun](https://github.com/yikuansun)
- - UX by [@mustafaGFX](https://github.com/mustafaGFX)
+ - UX and branding by [@mustafaGFX](https://github.com/mustafaGFX)
