@@ -14,7 +14,7 @@ A free, advanced, vector-based lens flare rendering software
 
 ## Demo
 
-[Try it out here](https://yikuansun.github.io/progenflares)
+[Try it out here](https://lunalgraphics.github.io/weblauncher#progenflares)
 
 
 ## Screenshots
